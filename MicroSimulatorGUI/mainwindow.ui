@@ -51,6 +51,9 @@
         <pointsize>10</pointsize>
        </font>
       </property>
+      <property name="tabStopWidth">
+       <number>60</number>
+      </property>
      </widget>
      <widget class="QPushButton" name="Add_to_Debug">
       <property name="geometry">
@@ -469,6 +472,9 @@
       </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+      <property name="tabStopWidth">
+       <number>60</number>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBoxZero">
