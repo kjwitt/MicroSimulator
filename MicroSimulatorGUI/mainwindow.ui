@@ -30,12 +30,104 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Editor</string>
      </attribute>
+     <widget class="QPlainTextEdit" name="Editor_Window">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>971</width>
+        <height>561</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Add_to_Debug">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>580</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Add to Debug</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Clear">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>580</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Load_Text_File">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>580</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Load Text File</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Save_Text_File">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>580</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Save Text File</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -565,6 +657,7 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen_Code_File"/>
+    <addaction name="actionSave_Text_File"/>
    </widget>
    <widget class="QMenu" name="menuCommands">
     <property name="title">
@@ -593,7 +686,7 @@
   </action>
   <action name="actionOpen_Code_File">
    <property name="text">
-    <string>Open Code File...</string>
+    <string>Load Text File...</string>
    </property>
   </action>
   <action name="actionRun">
@@ -604,6 +697,11 @@
   <action name="actionNext_Cycle">
    <property name="text">
     <string>Next Cycle</string>
+   </property>
+  </action>
+  <action name="actionSave_Text_File">
+   <property name="text">
+    <string>Save Text File...</string>
    </property>
   </action>
  </widget>
