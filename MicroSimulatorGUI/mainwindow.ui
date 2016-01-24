@@ -32,16 +32,16 @@
     <property name="currentIndex">
      <number>1</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="editorTab">
      <attribute name="title">
       <string>Editor</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="debugTab">
      <attribute name="title">
       <string>Debug</string>
      </attribute>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
+     <widget class="QPlainTextEdit" name="InstructionMemory">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -81,7 +81,7 @@
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_3">
+     <widget class="QPlainTextEdit" name="InstructionMemoryAddresses">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -124,7 +124,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="InstructionMemoryLabel">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -145,7 +145,7 @@
        <string>Instruction Memory</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="AssemblyCodeLabel">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -166,11 +166,11 @@
        <string>Assembly Code</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_7">
+     <widget class="QPlainTextEdit" name="ACoutput">
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>380</y>
+        <y>450</y>
         <width>31</width>
         <height>31</height>
        </rect>
@@ -188,11 +188,11 @@
        <string>00</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="MemoryDataBus">
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>280</y>
+        <y>350</y>
         <width>161</width>
         <height>21</height>
        </rect>
@@ -209,7 +209,7 @@
        <string>Memory Data Bus</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_6">
+     <widget class="QPlainTextEdit" name="PCoutput">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -231,7 +231,29 @@
        <string>00</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_8">
+     <widget class="QPlainTextEdit" name="MDBoutput">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>380</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="plainText">
+       <string>00</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="MABoutput">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -253,29 +275,7 @@
        <string>00</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_9">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>240</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Consolas</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-      <property name="plainText">
-       <string>00</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="StatusRegister">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -296,7 +296,7 @@
        <string>Status Registers</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="ProgramCounter">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -317,11 +317,11 @@
        <string>Program Counter</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="Accumulator">
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>350</y>
+        <y>420</y>
         <width>121</width>
         <height>21</height>
        </rect>
@@ -338,7 +338,7 @@
        <string>Accumulator</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="checkBoxCarry">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -360,7 +360,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_5">
+     <widget class="QPlainTextEdit" name="AssemblyCode">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -379,7 +379,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="checkBoxZero">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -401,11 +401,11 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="MemoryAddressBus">
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>210</y>
+        <y>280</y>
         <width>181</width>
         <height>21</height>
        </rect>
@@ -422,7 +422,7 @@
        <string>Memory Address Bus</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="checkBoxNegative">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -444,7 +444,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="MainMemoryLabel">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -465,7 +465,7 @@
        <string>Main Memory</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_2">
+     <widget class="QPlainTextEdit" name="MainMemory">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -505,7 +505,7 @@
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_4">
+     <widget class="QPlainTextEdit" name="MainMemoryAddresses">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -546,6 +546,101 @@
       </property>
       <property name="backgroundVisible">
        <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonAssemble">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>490</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Assemble</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonRun">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>520</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonStop">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>580</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonStep">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>550</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Step</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="InstructionRegisterLabel">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>210</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Instruction Register</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="IRotuput">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>240</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="plainText">
+       <string>00</string>
       </property>
      </widget>
     </widget>
