@@ -7,13 +7,11 @@
  * $ ./assem input.asm output.bin
  *
  * author: Zachary Ankenman
- * version 0.1
+ * version 0.2
  */
 
 #include <stdio.h>
 #include "constants.h"
-
-#define MEMSIZE 256
 
 int main (int argc, char *argv[]) {
 	// Check input arguments
@@ -201,7 +199,7 @@ int main (int argc, char *argv[]) {
 	}
 
 	// Write binary file
-	fwrite(instrMem, 1, sizeof(instrMem), output);
+	fwrite(instrMem, sizeof(char), sizeof(instrMem), output);
 
 	// Close files
 	fclose(input);
