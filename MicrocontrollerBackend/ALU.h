@@ -1,4 +1,11 @@
-/* addsuborlogic: 0 use adder unit to compute values
+/*  Assuming the C, Z, and N flags are all global variables
+ *  In this file is:
+ *        function for ALU
+ *        function for checking Z flag
+ *        function for checking N flag
+ *        * I am putting together a function to check for C overflow/underflow but it still needs to be created
+ *
+ *addsuborlogic: 0 use adder unit to compute values
  * 				  1 use logic unit to compute values
  * ACC          : Input ACC value
  * Databus      : Input Databus value
