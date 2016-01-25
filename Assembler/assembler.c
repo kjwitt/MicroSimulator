@@ -7,12 +7,14 @@
  * $ ./assem input.asm output.bin
  *
  * author: Zachary Ankenman
- * version 0.2
+ * version 0.3
  */
 
 #include <stdio.h>
 #include "constants.h"
+#include "assembler.h"
 
+// The main is mainly here for testing.
 int main (int argc, char *argv[]) {
 	// Check input arguments
 	if (argc != 3) {
@@ -22,17 +24,29 @@ int main (int argc, char *argv[]) {
 	}
 
 	// Open Input and Output files
-        FILE *input = fopen( argv[1], "r" );
+        //FILE *input = fopen( argv[1], "r" );
         FILE *output = fopen( argv[2], "wb" );
-        if ( input == 0 || output == 0 )
+       /* if ( input == 0 || output == 0 )
         {
 		printf( "Could not open a file. Exiting.\ninput: %ld, output %ld\n", (long)&input, (long)&output);
 		return(2);	
-        }
+        }*/
 
 	// Create memory array for instruction memory
 	char instrMem[MEMSIZE];
 
+	// Fill memory
+	fillMem(instrMem, argv[1]);
+
+	// Write binary file
+	fwrite(instrMem, sizeof(char), sizeof(instrMem), output);
+
+	// Close files
+	fclose(output);
+}
+
+void fillMem (char * instrMem, char * inputFile) {
+        FILE *input = fopen(inputFile, "r" );
 	char instr[5], operand[10]; // Buffers for instruction and operand
 	int counter = 0; // Count number of instructions
 	while (fscanf(input, "%s", instr) == 1 && counter < MEMSIZE) {
@@ -197,11 +211,6 @@ int main (int argc, char *argv[]) {
 	for (; counter < MEMSIZE; counter++) {
 		instrMem[counter] = 0;
 	}
-
-	// Write binary file
-	fwrite(instrMem, sizeof(char), sizeof(instrMem), output);
-
-	// Close files
+	// Close file
 	fclose(input);
-	fclose(output);
 }
