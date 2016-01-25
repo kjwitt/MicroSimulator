@@ -78,7 +78,10 @@ void MainWindow::on_actionLoad_Text_File_triggered()
     inputfile.close();
 }
 
+void MainWindow::on_pushButtonAssemble_released()
+{
 
+}
 
 void MainWindow::on_actionAssemble_triggered()
 {
@@ -94,8 +97,6 @@ void MainWindow::on_actionStep_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
 }
-
-
 
 void MainWindow::on_actionStop_triggered()
 {

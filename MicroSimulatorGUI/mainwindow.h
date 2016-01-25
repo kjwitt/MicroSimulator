@@ -37,6 +37,8 @@ private slots:
 
     void on_actionStop_triggered();
 
+    void on_pushButtonAssemble_released();
+
 private:
     Ui::MainWindow *ui;
 };

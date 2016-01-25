@@ -42,11 +42,11 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="editorTab">
        <attribute name="title">
-        <string>Editor</string>
+        <string>Edit</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -580,6 +580,12 @@
             <enum>Qt::Horizontal</enum>
            </property>
            <widget class="QPlainTextEdit" name="MainMemoryAddresses">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>251</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>60</width>
@@ -621,10 +627,16 @@
             </property>
            </widget>
            <widget class="QPlainTextEdit" name="MainMemory">
+            <property name="minimumSize">
+             <size>
+              <width>356</width>
+              <height>251</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>356</width>
-              <height>16777215</height>
+              <height>251</height>
              </size>
             </property>
             <property name="font">
@@ -690,6 +702,12 @@
             <enum>Qt::Horizontal</enum>
            </property>
            <widget class="QPlainTextEdit" name="InstructionMemoryAddresses">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>251</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>60</width>
@@ -731,10 +749,16 @@
             </property>
            </widget>
            <widget class="QPlainTextEdit" name="InstructionMemory">
+            <property name="minimumSize">
+             <size>
+              <width>356</width>
+              <height>251</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>356</width>
-              <height>16777215</height>
+              <height>251</height>
              </size>
             </property>
             <property name="font">
