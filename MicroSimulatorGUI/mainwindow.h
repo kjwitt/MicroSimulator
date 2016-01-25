@@ -25,6 +25,18 @@ private slots:
 
     void on_Add_to_Debug_clicked();
 
+    void on_actionSave_Text_File_triggered();
+
+    void on_actionLoad_Text_File_triggered();
+
+    void on_actionAssemble_triggered();
+
+    void on_actionRun_triggered();
+
+    void on_actionStep_triggered();
+
+    void on_actionStop_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
