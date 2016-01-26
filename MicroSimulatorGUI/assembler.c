@@ -45,7 +45,7 @@ int main (int argc, char *argv[]) {
 	fclose(output);
 }
 
-void fillMem (char * instrMem, char * inputFile) {
+void assemble (char * instrMem, char * inputFile) {
         FILE *input = fopen(inputFile, "r" );
 	char instr[5], operand[10]; // Buffers for instruction and operand
 	int counter = 0; // Count number of instructions
