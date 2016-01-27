@@ -1,9 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "clear_check.h"
 #include <QFileDialog>
 #include <QPlainTextEdit>
 #include <QTextStream>
 #include <QFile>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,24 +34,24 @@ void MainWindow::on_Save_Text_File_released()
     QFile outputfile(outputfilename);
     outputfile.open(QFile::WriteOnly | QFile::Text);
     QTextStream out(&outputfile);
-
-    //outputfile.write(ui->Editor_Window->toPlainText());
-
     out << ui->Editor_Window->toPlainText();
-
-
     outputfile.close();
-
 }
 
 void MainWindow::on_Clear_released()
 {
-    ui->Editor_Window->clear();
+    Clear_Check clear_check;
+    if(clear_check.exec())
+    {
+        ui->Editor_Window->clear();
+    }
 }
 
 void MainWindow::on_Add_to_Debug_clicked()
 {
     ui->AssemblyCode->setPlainText(ui->Editor_Window->toPlainText());
+    ui->AssemblyCodeLabel->setStyleSheet("QLabel {color: black;}");
+    ui->AssemblyCodeLabel->setText("Assembly Code");
     ui->tabWidget->setCurrentIndex(1);
 }
 void MainWindow::on_actionSave_Text_File_triggered()
@@ -59,12 +61,7 @@ void MainWindow::on_actionSave_Text_File_triggered()
     QFile outputfile(outputfilename);
     outputfile.open(QFile::WriteOnly | QFile::Text);
     QTextStream out(&outputfile);
-
-    //outputfile.write(ui->Editor_Window->toPlainText());
-
     out << ui->Editor_Window->toPlainText();
-
-
     outputfile.close();
 }
 
@@ -101,4 +98,10 @@ void MainWindow::on_actionStep_triggered()
 void MainWindow::on_actionStop_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_Editor_Window_textChanged()
+{
+    ui->AssemblyCodeLabel->setStyleSheet("QLabel {color: red;}");
+    ui->AssemblyCodeLabel->setText("Assembly Code (not synced)");
 }

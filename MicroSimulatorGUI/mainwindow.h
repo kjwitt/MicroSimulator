@@ -39,6 +39,8 @@ private slots:
 
     void on_pushButtonAssemble_released();
 
+    void on_Editor_Window_textChanged();
+
 private:
     Ui::MainWindow *ui;
 };
