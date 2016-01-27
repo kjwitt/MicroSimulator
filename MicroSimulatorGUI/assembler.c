@@ -4,10 +4,10 @@
  * This assembler does not check if the program is too long, it will just truncate it.
  * Usage example:
  * $ gcc assembler.c -o assem
- * $ ./assem input.asm output.bin
+ * $ ./assem program_in.asm memory_in.txt program_out.bin memory_out.bin
  *
  * author: Zachary Ankenman
- * version 0.3
+ * version 0.4
  */
 
 #include <stdio.h>
@@ -17,29 +17,34 @@
 // The main is mainly here for testing.
 int main (int argc, char *argv[]) {
 	// Check input arguments
-	if (argc != 3) {
-		printf("Incorrect number of arguments. Example:\n\n$ ./assem in.asm out.bin\n\n");
+	if (argc != 5) {
+		printf("Incorrect number of arguments. Example:\n\n");
+		printf("$ ./assem program_in.asm memory_in.txt program_out.bin memory_out.bin\n\n");
 		printf("Exiting.\n");
 		return(1);
 	}
 
 	// Open Input and Output files
         //FILE *input = fopen( argv[1], "r" );
-        FILE *output = fopen( argv[2], "wb" );
-       /* if ( input == 0 || output == 0 )
+        FILE *output = fopen( argv[3], "wb" );
+        FILE *memory_output = fopen( argv[4], "wb" );
+        /* if ( input == 0 || output == 0 )
         {
 		printf( "Could not open a file. Exiting.\ninput: %ld, output %ld\n", (long)&input, (long)&output);
 		return(2);	
         }*/
 
-	// Create memory array for instruction memory
+	// Create memory arrays for instruction and data memory
 	char instrMem[MEMSIZE];
+	char dataMem[MEMSIZE];
 
 	// Fill memory
-	fillMem(instrMem, argv[1]);
+	assemble(instrMem, argv[1]);
+	fillDataMemory(dataMem, argv[2]);
 
 	// Write binary file
 	fwrite(instrMem, sizeof(char), sizeof(instrMem), output);
+	fwrite(dataMem, sizeof(char), sizeof(dataMem), memory_output);
 
 	// Close files
 	fclose(output);
@@ -213,4 +218,20 @@ void assemble (char * instrMem, char * inputFile) {
 	}
 	// Close file
 	fclose(input);
+}
+
+
+void fillDataMemory (char * dataMem, char * inputFile) {
+        FILE *input = fopen(inputFile, "r" );
+	int tempOp;
+	int counter = 0; // Count number of operand
+	while (fscanf(input, "%d", &tempOp) == 1 && counter < MEMSIZE) {
+		dataMem[counter] = (char) tempOp;
+		counter++;
+	}
+
+	// Pad remaining memory with zeros
+	for (; counter < MEMSIZE; counter++) {
+		dataMem[counter] = 0;
+	}
 }

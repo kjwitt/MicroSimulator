@@ -7,7 +7,7 @@
  * $ ./assem input.asm output.bin
  *
  * author: Zachary Ankenman
- * version 0.3
+ * version 0.4
  */
 
 #ifndef _ASSEMBLER_H
@@ -20,6 +20,20 @@
  * instrMem is a char array 256 elements long
  * inputFile is a string containing location of plaintext assembly program
  */
-void fillMem (char * instrMem, char * inputFile);
+void assemble (char * instrMem, char * inputFile);
+
+/*
+ * This function will read up to 256 values from a text file and fill char array dataMem.
+ * The values in the text file should be both
+ * a) two's complement, 8-bit values. [-128, 127]
+ * and 
+ * b) separated by whitespace, e.g. 34 -13 6 -4 -127
+ * 
+ * If fewer than 256 values are in the file, the remaining values will be 0.
+ *
+ * dataMem is a char array 256 elements long
+ * inputFile is a string containing the location of plaintext data memory.
+ */
+void fillDataMemory (char * dataMem, char * inputFile);
 
 #endif
