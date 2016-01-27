@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    clear_check.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    clear_check.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    clear_check.ui
