@@ -22,6 +22,7 @@
  *
  * Example: ALU(0, num1, num2, 0, 2, 0);
  */
+
 char ALU(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
 	int output=0b00000000; // output will be the value that gets returned
 	char Cin = 0;
