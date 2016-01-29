@@ -78,7 +78,7 @@ void ccheck(int addsub = 0, char val1 = 0b00000000, char val2 = 0b00000000, int 
  *                2 use INV bitwise operation
  *                3 use XOR bitwise operation
  */
-char ALU(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
+char alu(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
 	int output=0b00000000; // output will be the value that gets returned
 	char Cin = 0;
 

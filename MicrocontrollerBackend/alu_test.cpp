@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <bitset>
-#include "ALU.h"
+#include "alu.h"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ int main() {
 	cout << "num1 = " << std::bitset<8>(num1) << endl;
 	cout << "num2 = " << std::bitset<8>(num2) << endl;
 
-	output = ALU(0, num1, num2, 0, 2, 0);
+	output = alu(0, num1, num2, 0, 2, 0);
 
 	cout << std::bitset<8>(output) << endl;
 	cout << "C: " << C << endl;

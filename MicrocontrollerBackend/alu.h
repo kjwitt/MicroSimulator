@@ -12,7 +12,7 @@
 #define _ALU_H
 
 //Function headers
-char ALU(int addsuborlogic, char ACC, char Databus, int addsub, int Csel, int logic);
+char alu(int addsuborlogic, char ACC, char Databus, int addsub, int Csel, int logic);
 //functions to modify registers
 void zcheck(char checkvalue);
 void ncheck(char checkvalue);
