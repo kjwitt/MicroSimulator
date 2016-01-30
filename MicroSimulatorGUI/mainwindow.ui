@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>768</height>
+    <height>827</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -42,7 +42,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="editorTab">
        <attribute name="title">
@@ -164,134 +164,6 @@
         <string>Debug</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="2" column="2" rowspan="2">
-         <widget class="QSplitter" name="splitter_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <widget class="QLabel" name="MainMemoryLabel">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Main Memory</string>
-           </property>
-          </widget>
-          <widget class="QSplitter" name="splitter_2">
-           <property name="maximumSize">
-            <size>
-             <width>421</width>
-             <height>251</height>
-            </size>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <widget class="QPlainTextEdit" name="MainMemoryAddresses">
-            <property name="minimumSize">
-             <size>
-              <width>60</width>
-              <height>251</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>60</width>
-              <height>251</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Consolas</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="undoRedoEnabled">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="plainText">
-             <string>0x00
-0x10
-0x20
-0x30
-0x40
-0x50
-0x60
-0x70
-0x80
-0x90
-0xA0
-0xB0
-0xC0
-0xD0
-0xE0
-0xF0</string>
-            </property>
-            <property name="backgroundVisible">
-             <bool>false</bool>
-            </property>
-           </widget>
-           <widget class="QPlainTextEdit" name="MainMemory">
-            <property name="minimumSize">
-             <size>
-              <width>356</width>
-              <height>251</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>356</width>
-              <height>251</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Consolas</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="undoRedoEnabled">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="plainText">
-             <string>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</string>
-            </property>
-           </widget>
-          </widget>
-         </widget>
-        </item>
         <item row="0" column="1">
          <widget class="QSplitter" name="splitter_6">
           <property name="orientation">
@@ -378,37 +250,127 @@
           </widget>
          </widget>
         </item>
-        <item row="3" column="1">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QPushButton" name="pushButtonAssemble">
-            <property name="text">
-             <string>Assemble</string>
+        <item row="0" column="2" rowspan="2">
+         <widget class="QSplitter" name="splitter_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <widget class="QLabel" name="InstructionMemoryLabel">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Consolas</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Instruction Memory</string>
+           </property>
+          </widget>
+          <widget class="QSplitter" name="splitter">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <widget class="QPlainTextEdit" name="InstructionMemoryAddresses">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>251</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>251</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="undoRedoEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="plainText">
+             <string>0x00
+0x10
+0x20
+0x30
+0x40
+0x50
+0x60
+0x70
+0x80
+0x90
+0xA0
+0xB0
+0xC0
+0xD0
+0xE0
+0xF0</string>
+            </property>
+            <property name="backgroundVisible">
+             <bool>false</bool>
             </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButtonRun">
-            <property name="text">
-             <string>Run</string>
+           <widget class="QPlainTextEdit" name="InstructionMemory">
+            <property name="minimumSize">
+             <size>
+              <width>356</width>
+              <height>251</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>356</width>
+              <height>251</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="undoRedoEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="plainText">
+             <string>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</string>
             </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButtonStep">
-            <property name="text">
-             <string>Step</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButtonStop">
-            <property name="text">
-             <string>Stop</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+          </widget>
+         </widget>
         </item>
         <item row="1" column="1" rowspan="2">
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -629,12 +591,12 @@
           </item>
          </layout>
         </item>
-        <item row="0" column="2" rowspan="2">
-         <widget class="QSplitter" name="splitter_4">
+        <item row="2" column="2">
+         <widget class="QSplitter" name="splitter_3">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
-          <widget class="QLabel" name="InstructionMemoryLabel">
+          <widget class="QLabel" name="MainMemoryLabel">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -650,14 +612,20 @@
             </font>
            </property>
            <property name="text">
-            <string>Instruction Memory</string>
+            <string>Main Memory</string>
            </property>
           </widget>
-          <widget class="QSplitter" name="splitter">
+          <widget class="QSplitter" name="splitter_2">
+           <property name="maximumSize">
+            <size>
+             <width>421</width>
+             <height>251</height>
+            </size>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <widget class="QPlainTextEdit" name="InstructionMemoryAddresses">
+           <widget class="QPlainTextEdit" name="MainMemoryAddresses">
             <property name="minimumSize">
              <size>
               <width>60</width>
@@ -704,7 +672,7 @@
              <bool>false</bool>
             </property>
            </widget>
-           <widget class="QPlainTextEdit" name="InstructionMemory">
+           <widget class="QPlainTextEdit" name="MainMemory">
             <property name="minimumSize">
              <size>
               <width>356</width>
@@ -751,7 +719,158 @@
           </widget>
          </widget>
         </item>
-        <item row="0" column="0" rowspan="4">
+        <item row="3" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButtonAssemble">
+            <property name="text">
+             <string>Assemble</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonRun">
+            <property name="text">
+             <string>Run</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonStep">
+            <property name="text">
+             <string>Step</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonStop">
+            <property name="text">
+             <string>Stop</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="2">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="MainMemoryLabel_2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>I/O</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QPushButton" name="input1">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="input2">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="input3">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="input4">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="output1">
+              <property name="text">
+               <string>output1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="output2">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>23</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>output2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="output3">
+              <property name="text">
+               <string>output3</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="output4">
+              <property name="text">
+               <string>output4</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0" rowspan="3">
          <widget class="QSplitter" name="splitter_5">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -807,6 +926,12 @@
          </widget>
         </item>
        </layout>
+       <zorder>splitter_3</zorder>
+       <zorder>splitter_6</zorder>
+       <zorder>splitter_4</zorder>
+       <zorder>splitter_5</zorder>
+       <zorder></zorder>
+       <zorder>MainMemoryLabel_2</zorder>
       </widget>
      </widget>
     </item>

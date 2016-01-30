@@ -41,6 +41,8 @@ private slots:
 
     void on_Editor_Window_textChanged();
 
+    void on_input1_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

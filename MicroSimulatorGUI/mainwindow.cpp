@@ -105,3 +105,8 @@ void MainWindow::on_Editor_Window_textChanged()
     ui->AssemblyCodeLabel->setStyleSheet("QLabel {color: red;}");
     ui->AssemblyCodeLabel->setText("Assembly Code (not synced)");
 }
+
+void MainWindow::on_input1_clicked()
+{
+    ui->input1->setText("1");
+}
