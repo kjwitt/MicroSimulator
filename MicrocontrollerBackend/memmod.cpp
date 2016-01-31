@@ -23,13 +23,16 @@
 #define _MEMMOD_CPP
 
 //Functions
-char memmod(char addrval, char dataval, bool rw, char* memarray){
+char memmod(char addrval, char dataval, bool rw, char *memarray){
 	char output = 0;
 
+	memarray = memarray + addrval;
+
 	if (rw==0){
-		output = *memarray[addrval];
+		output = *memarray;
 	} else if (rw==1) {
-		*memarray[addrval] = dataval;
+		*memarray
+		= dataval;
 	}
 
 	return output;

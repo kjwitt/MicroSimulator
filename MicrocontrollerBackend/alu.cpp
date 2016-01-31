@@ -13,55 +13,9 @@
 #ifndef ALUFUNCTION_CPP_
 #define ALUFUNCTION_CPP_
 
+#include "statusflags.h"
+
 using namespace std;
-
-extern bool C=0, N=0, Z=0;
-
-void zcheck(char checkvalue){
-	if (checkvalue == 0){ //Check if need to set Z flag
-			Z = 1;
-		} else {
-			Z = 0;
-		}
-}
-
-void ncheck(char checkvalue){
-	if (checkvalue < 0){ //Check if need to set N flag
-			N = 1;
-		} else {
-			N = 0;
-		}
-}
-
-void cset(bool checkvalue){
-	switch(checkvalue){
-	case 0:
-		C = 0;
-	case 1:
-		C = 1;
-	}
-}
-
-void ccheck(int addsub = 0, char val1 = 0b00000000, char val2 = 0b00000000, int Cin=0){
-	int tempval1, tempval2, tempoutput;
-	tempval1 = (int)val1;
-	tempval2 = (int)val2;
-
-	switch (addsub){
-	case 0:
-		tempoutput = tempval1 + tempval2 + Cin;
-		break;
-	case 1:
-		tempoutput = tempval1 - tempval2 - Cin;
-		break;
-	}
-	tempoutput=tempoutput & 0x0100;
-	if (tempoutput != 0){
-		cset(1);
-	} else {
-		cset(0);
-	}
-}
 
 /* addsuborlogic: 0 use adder unit to compute values
  * 				  1 use logic unit to compute values
@@ -78,7 +32,8 @@ void ccheck(int addsub = 0, char val1 = 0b00000000, char val2 = 0b00000000, int 
  *                2 use INV bitwise operation
  *                3 use XOR bitwise operation
  */
-char alu(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
+
+char alu(Statusflags& object, int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
 	int output=0b00000000; // output will be the value that gets returned
 	char Cin = 0;
 
@@ -87,10 +42,10 @@ char alu(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, 
 
 		switch(Csel){ // Determining which C value to use in addition/subtraction
 		case 0:
-			Cin = C;  // Cin will be equal to global Carry flag variable
+			Cin = object.getc();  // Cin will be equal to global Carry flag variable
 			break;
 		case 1:
-			Cin = ~C; // Cin will be equal to inversion of global Carry Flag variable
+			Cin = ~object.getc(); // Cin will be equal to inversion of global Carry Flag variable
 			break;
 		case 2:
 			Cin = 0; // Cin will be equal to 0
@@ -104,11 +59,11 @@ char alu(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, 
 		case 0:
 
 			output = ACC + Databus + Cin;
-			ccheck(0, ACC, Databus, Cin);
+			object.checkc(0, ACC, Databus, Cin);
 			break;
 		case 1:
 			output = ACC - Databus - Cin;
-			ccheck(1, ACC, Databus, Cin);
+			object.checkc(1, ACC, Databus, Cin);
 			break;
 		}
 
@@ -132,8 +87,8 @@ char alu(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, 
 		break;
 	}
 
-	zcheck(output);
-	ncheck(output);
+	object.checkz(output);
+	object.checkn(output);
 
 	return output;
 }
