@@ -1,5 +1,5 @@
 /*
- * alufunction.cpp
+ * jumpfunction.cpp
  *
  *  Created on: Jan 29, 2016
  *      Author: Stephen Scheramic scheramic.1
