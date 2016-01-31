@@ -15,6 +15,7 @@
 #define JUMPFUNCTION_CPP_
 
 using namespace std;
+#include "statusflags.h"
 
 int bin2dec3bit(char* bin) {
     int dec = 0;
@@ -32,7 +33,12 @@ int bin2dec3bit(char* bin) {
  * C,N, and Z   : boolean values for the current C N Z flags
  * PC           : the current value of PC
  */
-void JUMP(char* inst, char* dest, bool C, bool N, bool Z, char* PC)  {
+void JUMP(char* inst, char* dest, Statusflags& object, char* PC)  {
+
+    //setup boolean values for CNZ from the globals
+    bool C = object.getc();
+    bool N = object.getn();
+    bool Z = object.getz();
 
     //unconditional jump test
     if (inst == "11000000") {
