@@ -1025,8 +1025,6 @@
        <zorder>splitter_4</zorder>
        <zorder>splitter_5</zorder>
        <zorder></zorder>
-       <zorder>layoutWidget</zorder>
-       <zorder>layoutWidget_2</zorder>
       </widget>
      </widget>
     </item>
