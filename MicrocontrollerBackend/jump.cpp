@@ -36,7 +36,7 @@ void JUMP(char* inst, char* dest, bool C, bool N, bool Z, char* PC)  {
 
     //unconditional jump test
     if (inst == "11000000") {
-        //PC=ALU()
+        PC = dest;
         return ;
     }
 
