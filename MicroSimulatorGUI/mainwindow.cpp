@@ -105,3 +105,46 @@ void MainWindow::on_Editor_Window_textChanged()
     ui->AssemblyCodeLabel->setStyleSheet("QLabel {color: red;}");
     ui->AssemblyCodeLabel->setText("Assembly Code (not synced)");
 }
+
+void MainWindow::on_input1_clicked()
+{
+    ui->input1->setText("1");
+
+}
+
+void MainWindow::on_input2_clicked()
+{
+    ui->input2->setText("1");
+}
+
+void MainWindow::on_input3_clicked()
+{
+    ui->input3->setText("1");
+}
+
+void MainWindow::on_input4_clicked()
+{
+    ui->input4->setText("1");
+}
+
+void MainWindow::on_input5_clicked()
+{
+    ui->input5->setText("1");
+}
+
+void MainWindow::on_input6_clicked()
+{
+    ui->input6->setText("1");
+}
+
+void MainWindow::on_input7_clicked()
+{
+    ui->input7->setText("1");
+}
+
+void MainWindow::on_input8_clicked()
+{
+    ui->input8->setText("1");
+}
+
+
