@@ -17,8 +17,8 @@
 #define ADCI (unsigned char) 0b01000101 // Add with Carry Immediate
 #define SUBD (unsigned char) 0b01010010 // Subtract Direct
 #define SUBI (unsigned char) 0b01010001 // Subtract Immediate
-#define SBCD (unsigned char) 0b01110010 // Subtract with Carry Direct
-#define SBCI (unsigned char) 0b01110001 // Subtract with Carry Immediate
+#define SBCD (unsigned char) 0b01111010 // Subtract with Carry Direct
+#define SBCI (unsigned char) 0b01111001 // Subtract with Carry Immediate
 #define INC  (unsigned char) 0b01001100 // Increment
 #define DEC  (unsigned char) 0b01000100 // Decrement
 #define ANDD (unsigned char) 0b01011010 // And Direct
