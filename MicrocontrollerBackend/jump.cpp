@@ -1,5 +1,5 @@
 /*
- * alufunction.cpp
+ * jumpfunction.cpp
  *
  *  Created on: Jan 29, 2016
  *      Author: Stephen Scheramic scheramic.1
@@ -15,6 +15,7 @@
 #define JUMPFUNCTION_CPP_
 
 using namespace std;
+#include "statusflags.h"
 
 int bin2dec3bit(char* bin) {
     int dec = 0;
@@ -32,11 +33,16 @@ int bin2dec3bit(char* bin) {
  * C,N, and Z   : boolean values for the current C N Z flags
  * PC           : the current value of PC
  */
-void JUMP(char* inst, char* dest, bool C, bool N, bool Z, char* PC)  {
+void JUMP(char* inst, char* dest, Statusflags& object, char* PC)  {
+
+    //setup boolean values for CNZ from the globals
+    bool C = object.getc();
+    bool N = object.getn();
+    bool Z = object.getz();
 
     //unconditional jump test
     if (inst == "11000000") {
-        //PC=ALU()
+        PC = dest;
         return ;
     }
 
@@ -72,49 +78,49 @@ void JUMP(char* inst, char* dest, bool C, bool N, bool Z, char* PC)  {
         // 111 jump depends on C,N, and Z
            case 7:
            if ((C==C_test) && (N==N_test) && (Z==Z_test) ){
-           //PC = ALC();
+           PC = dest;
            }
            break;
 
         // 110 jump depends on C and N
            case 6:
            if ((C==C_test) && (N==N_test) ){
-           //PC = ALC();
+           PC = dest;
            }
            break;
 
          // 101 jump depends on C and Z
             case 5:
             if ((C==C_test) && (Z==Z_test) ){
-            //PC = ALC();
+            PC = dest;
             }
             break;
 
             // 011 jump depends on N and Z
             case 3:
             if ((N==N_test) && (Z==Z_test) ){
-            //PC = ALC();
+            PC = dest;
             }
             break;
 
             // 100 jump depends on C
             case 4:
             if ( (C==C_test) ){
-            //PC = ALC();
+            PC = dest;
             }
             break;
 
             // 010 jump depends on N
             case 2:
             if ( (N==N_test) ){
-            //PC = ALC();
+            PC = dest;
             }
             break;
 
             // 001 jump depends on Z
             case 1:
             if ( (Z==Z_test) ){
-            //PC = ALC();
+            PC = dest;
             }
             break;
 
