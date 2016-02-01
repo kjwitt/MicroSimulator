@@ -1,11 +1,23 @@
-/*  Assuming the C, Z, and N flags are all global variables
- *  In this file is:
- *        function for ALU
- *        function for checking Z flag
- *        function for checking N flag
- *        * I am putting together a function to check for C overflow/underflow but it still needs to be created
+/*
+ * alufunction.cpp
  *
- *addsuborlogic: 0 use adder unit to compute values
+ *  Created on: Jan 28, 2016
+ *      Author: Logan Myers, myers.1277
+ *
+ *      The ALU function replicates the ALU within the Microbaby
+ *      architecture. Please see the comments above the function
+ *      parameters for an explanation of said parameters.
+ *
+ *      Version     :1.0
+ */
+#ifndef ALUFUNCTION_CPP_
+#define ALUFUNCTION_CPP_
+
+#include "statusflags.h"
+
+using namespace std;
+
+/* addsuborlogic: 0 use adder unit to compute values
  * 				  1 use logic unit to compute values
  * ACC          : Input ACC value
  * Databus      : Input Databus value
@@ -19,10 +31,9 @@
  *                1 use OR bitwise operation
  *                2 use INV bitwise operation
  *                3 use XOR bitwise operation
- *
- * Example: ALU(0, num1, num2, 0, 2, 0);
  */
-char ALU(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
+
+char alu(Statusflags& object, int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, int addsub = 0, int Csel = 0, int logic = 0){
 	int output=0b00000000; // output will be the value that gets returned
 	char Cin = 0;
 
@@ -31,10 +42,10 @@ char ALU(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, 
 
 		switch(Csel){ // Determining which C value to use in addition/subtraction
 		case 0:
-			Cin = C;  // Cin will be equal to global Carry flag variable
+			Cin = object.getc();  // Cin will be equal to global Carry flag variable
 			break;
 		case 1:
-			Cin = ~C; // Cin will be equal to inversion of global Carry Flag variable
+			Cin = ~object.getc(); // Cin will be equal to inversion of global Carry Flag variable
 			break;
 		case 2:
 			Cin = 0; // Cin will be equal to 0
@@ -46,12 +57,13 @@ char ALU(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, 
 
 		switch(addsub){ // Use addition or subtraction?
 		case 0:
+
 			output = ACC + Databus + Cin;
-			//* Here we will check if addition forced overflow and put that in C
+			object.checkc(0, ACC, Databus, Cin);
 			break;
 		case 1:
 			output = ACC - Databus - Cin;
-			// * Here we will check if subtraction forced overflow and put that in C
+			object.checkc(1, ACC, Databus, Cin);
 			break;
 		}
 
@@ -75,24 +87,14 @@ char ALU(int addsuborlogic=0, char ACC = 0b00000000, char Databus = 0b00000000, 
 		break;
 	}
 
-	zflagcheck(output);
-	nflagcheck(output);
+	object.checkz(output);
+	object.checkn(output);
 
 	return output;
 }
 
-void zflagcheck(char checkvalue){ //Check if need to set Z flag
-	if (checkvalue == 0){ 
-			Z = 1;
-		} else {
-			Z = 0;
-		}
-}
+#endif /* ALUFUNCTION_CPP_ */
 
-void nflagcheck(char checkvalue){ //Check if need to set N flag
-	if (checkvalue < 0){ 
-			N = 1;
-		} else {
-			N = 0;
-		}
-}
+
+
+
