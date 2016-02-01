@@ -13,7 +13,7 @@
 #ifndef ALUFUNCTION_CPP_
 #define ALUFUNCTION_CPP_
 
-#include "statusflags.h"
+#include "alu.h"
 
 using namespace std;
 

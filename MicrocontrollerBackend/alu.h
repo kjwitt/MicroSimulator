@@ -30,6 +30,8 @@
 #ifndef _ALU_H
 #define _ALU_H
 
+#include "statusflags.h"
+
 //Function headers
 char alu(Statusflags& object, int addsuborlogic, char ACC, char Databus, int addsub, int Csel, int logic);
 
