@@ -16,6 +16,9 @@
 
 using namespace std;
 #include "statusflags.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 
 int bin2dec3bit(char* bin) {
     int dec = 0;
@@ -41,32 +44,32 @@ void JUMP(char* inst, char* dest, Statusflags& object, char* PC)  {
     bool Z = object.getz();
 
     //unconditional jump test
-    if (inst == "11000000") {
+    if (inst == 'À') {
         PC = dest;
         return ;
     }
 
     // setup conditional bits for
-    char condjump[3];
-    strncpy(condjump, inst+2, 3);
-    condjump[3] = '\0';
-    int dec_condjump = bin2dec3bit(condjump);
+    int dec_condjump = 4*((inst >> 5) & 0x1) + 2*((inst >> 4) & 0x1) + 1*((inst >> 3) & 0x1);
 
     // get our u terms as boolean
         bool C_test;
-        if (inst[5] == '1') {
+        bool temp_bit = (inst >> 2) & 0x1;
+        if (temp_bit == '1') {
             C_test = 1; }
         else {
             C_test = 0;
         }
         bool N_test;
-        if (inst[6] == '1') {
+        bool temp_bit = (inst >> 1) & 0x1;
+        if (temp_bit == '1') {
             N_test = 1; }
         else {
             N_test = 0;
         }
         bool Z_test;
-        if (inst[7] == '1') {
+        bool temp_bit = (inst >> 0) & 0x1;
+        if (temp_bit == '1') {
             Z_test = 1; }
         else {
             Z_test = 0;
