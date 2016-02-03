@@ -158,17 +158,9 @@ void MainWindow::on_input8_clicked()
 
 void MainWindow::on_pushButtonAssmble_clicked()
 {
-    QString assemblerCodeText = ui->AssemblyCode->toPlainText();
-    QByteArray assemblerCodeTextArray = assemblerCodeText.toLatin1();
-    char * assemblerCode = assemblerCodeTextArray.data();
+    //QString assemblerCodeText = ui->AssemblyCode->toPlainText();
+    //QByteArray assemblerCodeTextArray = assemblerCodeText.toLatin1();
+    char assemblerFile[] = "C:\\Users\\Wesley Kenyon\\Desktop\\testfile.txt";
     char instrMem[MEMSIZE];
-    // assemble(instrMem,assemblerCode);
-    /*
-    QString tester(instrMem);
-    QMessageBox::critical(
-        this,
-        tr("test"),
-        tr(instrMem) );
-    */
-
+    assemble(instrMem,assemblerFile);
 }
