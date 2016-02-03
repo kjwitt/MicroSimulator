@@ -11,9 +11,10 @@
  */
 
 #include <stdio.h>
-#include "constants.h"
+#include "hexconstants.h"
 #include "assembler.h"
 
+/**
 // The main is mainly here for testing.
 int main (int argc, char *argv[]) {
 	// Check input arguments
@@ -33,7 +34,7 @@ int main (int argc, char *argv[]) {
 		printf( "Could not open a file. Exiting.\ninput: %ld, output %ld\n", (long)&input, (long)&output);
 		return(2);	
         }*/
-
+/**
 	// Create memory arrays for instruction and data memory
 	char instrMem[MEMSIZE];
 	char dataMem[MEMSIZE];
@@ -49,13 +50,12 @@ int main (int argc, char *argv[]) {
 	// Close files
 	fclose(output);
 }
-
+*/
 void assemble (char * instrMem, char * inputFile) {
         FILE *input = fopen(inputFile, "r" );
 	char instr[5], operand[10]; // Buffers for instruction and operand
 	int counter = 0; // Count number of instructions
 	while (fscanf(input, "%s", instr) == 1 && counter < MEMSIZE) {
-		char temp[9];
 
 		// Switch-like if-else block because C doesn't switch on strings
 		// LDA
@@ -65,7 +65,7 @@ void assemble (char * instrMem, char * inputFile) {
 				instrMem[counter++] = LDAI;
 				instrMem[counter++] = atoi(operand + 1);
 			} else {
-				instrMem[counter++] = LDAD;
+                instrMem[counter++] = LDAD;
 				instrMem[counter++] = atoi(operand);
 			}
 		}

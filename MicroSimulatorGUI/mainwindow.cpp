@@ -6,6 +6,12 @@
 #include <QTextStream>
 #include <QFile>
 #include <QLabel>
+#include <QApplication>
+#include <QMessageBox>
+extern "C"{
+#include "assembler.h"
+#include "hexconstants.h"
+}
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -54,6 +60,7 @@ void MainWindow::on_Add_to_Debug_clicked()
     ui->AssemblyCodeLabel->setText("Assembly Code");
     ui->tabWidget->setCurrentIndex(1);
 }
+
 void MainWindow::on_actionSave_Text_File_triggered()
 {
     ui->tabWidget->setCurrentIndex(0);
@@ -148,3 +155,20 @@ void MainWindow::on_input8_clicked()
 }
 
 
+
+void MainWindow::on_pushButtonAssmble_clicked()
+{
+    QString assemblerCodeText = ui->AssemblyCode->toPlainText();
+    QByteArray assemblerCodeTextArray = assemblerCodeText.toLatin1();
+    char * assemblerCode = assemblerCodeTextArray.data();
+    char instrMem[MEMSIZE];
+    // assemble(instrMem,assemblerCode);
+    /*
+    QString tester(instrMem);
+    QMessageBox::critical(
+        this,
+        tr("test"),
+        tr(instrMem) );
+    */
+
+}

@@ -57,6 +57,7 @@ private slots:
 
     void on_input8_clicked();
 
+    void on_pushButtonAssmble_clicked();
 
 private:
     Ui::MainWindow *ui;

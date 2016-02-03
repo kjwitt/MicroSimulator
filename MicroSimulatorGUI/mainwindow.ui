@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>827</height>
+    <height>903</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -618,7 +618,7 @@
           <widget class="QSplitter" name="splitter_2">
            <property name="maximumSize">
             <size>
-             <width>421</width>
+             <width>422</width>
              <height>251</height>
             </size>
            </property>
@@ -722,7 +722,7 @@
         <item row="3" column="1">
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QPushButton" name="pushButtonAssemble">
+           <widget class="QPushButton" name="pushButtonAssmble">
             <property name="text">
              <string>Assemble</string>
             </property>
@@ -1036,7 +1036,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
