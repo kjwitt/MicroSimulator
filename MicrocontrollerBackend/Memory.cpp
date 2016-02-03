@@ -2,15 +2,24 @@
  * Memory.cpp
  *
  *  Created on: Jan 29, 2016
- *      Author: logan
+ *      Author: Logan Myers
+ *
+ *		Version: 0.1
+ *
+ *		Explanation:
+ *      access(bool rw, char addrval, char dataval = 0b000000)
+ *
+ *      rw		:	0	read addrval
+ *      			1	write to addrval
+ *      addrval	:	Specifies the memory block to read from/write to
+ *      dataval	:	Specifies what to write to memory ( may omit if rw = 0 )
  */
 
 #include "Memory.h"
 
 Memory::Memory() {
 	// TODO Auto-generated constructor stub
-	instruction[255] = {};
-	data[255] = {};
+	memarray[255] = {};		//Make sure to clear data in the array during initialization
 }
 
 Memory::~Memory() {
@@ -18,23 +27,18 @@ Memory::~Memory() {
 }
 
 //Functions
-char Memory::memmod(char addrval, char dataval, bool rw, bool memset){
+char Memory::access(bool rw, char addrval, char dataval = 0b000000){
+	int tempaddrval;
+	tempaddrval = (int)addrval;
 	char output = 0;
 
-	if (memset==0){
-
-		if (rw==0){
-			output = instruction[addrval];
-		} else if (rw==1) {
-			instruction[addrval] = dataval;
-		}
-	} else if (memset==1){
-		if (rw==0){
-			output = data[addrval];
-		} else if (rw==1) {
-			data[addrval] = dataval;
-		}
+	if (rw==0){
+		output = memarray[tempaddrval];
+	} else if (rw==1) {
+		memarray[tempaddrval] = dataval;
 	}
+
+
 
 	return output;
 }

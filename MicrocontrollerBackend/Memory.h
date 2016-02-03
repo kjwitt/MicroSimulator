@@ -2,7 +2,20 @@
  * Memory.h
  *
  *  Created on: Jan 29, 2016
- *      Author: logan
+ *      Author: Logan Myers
+ *
+ *      Version: 0.1
+ *
+ *      Explanation:
+ *
+ *      This class creates a 256 element array object to act as memory for microbaby simulator
+ *
+ *      access(bool rw, char addrval, char dataval = 0b000000)
+ *
+ *      rw		:	0	read addrval
+ *      			1	write to addrval
+ *      addrval	:	Specifies the memory block to read from/write to
+ *      dataval	:	Specifies what to write to memory
  */
 
 #ifndef MEMORY_H_
@@ -12,14 +25,10 @@ class Memory {
 public:
 	Memory();
 	~Memory();
-	char memmod(char addrval, char dataval, bool rw, bool memset);
-	void writeinstructionmemory(char addrval, char dataval);
-	void writedatamemory(char addrval, char dataval);
-	char readinstructionmemory(char addrval);
-	char writedatamemory(char addrval);
+	char access(bool rw, char addrval, char dataval);
 
 protected:
-char instruction[255], data[255];
+char memarray[255];
 };
 
 #endif /* MEMORY_H_ */
