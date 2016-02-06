@@ -15,12 +15,21 @@
 
 /*
  * This function will fill instrMem with 8-bit values based on program text file
- * located in inputFile
+ * located in inputFile. All addressses and immediate numbers are in decimal.
  *
- * instrMem is a char array 256 elements long
+ * Input program can have one assembly directive following the code, .data
+ * The data is read in pairs with the first number being an address and the
+ * second number being the data. Both the data and address can be represented in any
+ * combination of decimal, octal, or hexadecimal. Notes:
+ * Octal is prepended with 0, e.g. 0101 for decial 65.
+ * Hex is prepended with either 0X or 0x, e.g. 0x41 for decimal 65.
+ * Decimal is not prepended with anything.
+ *
+ * instrMem is a char array 256 elements long for program
+ * dataMem is a char array 256 elements long for data
  * inputFile is a string containing location of plaintext assembly program
  */
-void assemble (char * instrMem, char * inputFile);
+void assemble (char * instrMem, char * dataMem, char * inputFile);
 
 /*
  * This function will read up to 256 values from a text file and fill char array dataMem.

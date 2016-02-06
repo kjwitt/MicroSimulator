@@ -4,7 +4,7 @@
  * This assembler does not check if the program is too long, it will just truncate it.
  * Usage example:
  * $ gcc assembler.c -o assem
- * $ ./assem program_in.asm memory_in.txt program_out.bin memory_out.bin
+ * $ ./assem program_in.asm program_out.bin memory_out.bin
  *
  * author: Zachary Ankenman
  * version 0.4
@@ -17,17 +17,17 @@
 // The main is mainly here for testing.
 int main (int argc, char *argv[]) {
 	// Check input arguments
-	if (argc != 5) {
+	if (argc != 4) {
 		printf("Incorrect number of arguments. Example:\n\n");
-		printf("$ ./assem program_in.asm memory_in.txt program_out.bin memory_out.bin\n\n");
+		printf("$ ./assem program_in.asm program_out.bin memory_out.bin\n\n");
 		printf("Exiting.\n");
 		return(1);
 	}
 
 	// Open Input and Output files
         //FILE *input = fopen( argv[1], "r" );
-        FILE *output = fopen( argv[3], "wb" );
-        FILE *memory_output = fopen( argv[4], "wb" );
+        FILE *output = fopen( argv[2], "wb" );
+        FILE *memory_output = fopen( argv[3], "wb" );
         /* if ( input == 0 || output == 0 )
         {
 		printf( "Could not open a file. Exiting.\ninput: %ld, output %ld\n", (long)&input, (long)&output);
@@ -39,8 +39,8 @@ int main (int argc, char *argv[]) {
 	char dataMem[MEMSIZE];
 
 	// Fill memory
-	assemble(instrMem, argv[1]);
-	fillDataMemory(dataMem, argv[2]);
+	assemble(instrMem, dataMem, argv[1]);
+	//fillDataMemory(dataMem, argv[2]);
 
 	// Write binary file
 	fwrite(instrMem, sizeof(char), sizeof(instrMem), output);
@@ -50,11 +50,11 @@ int main (int argc, char *argv[]) {
 	fclose(output);
 }
 
-void assemble (char * instrMem, char * inputFile) {
+void assemble (char * instrMem, char * dataMem, char * inputFile) {
         FILE *input = fopen(inputFile, "r" );
 	char instr[5], operand[10]; // Buffers for instruction and operand
 	int counter = 0; // Count number of instructions
-	while (fscanf(input, "%s", instr) == 1 && counter < MEMSIZE) {
+	while (fscanf(input, "%s", instr) == 1 && (strcmp(instr, ".data") != 0) && counter < MEMSIZE) {
 		char temp[9];
 
 		// Switch-like if-else block because C doesn't switch on strings
@@ -216,6 +216,20 @@ void assemble (char * instrMem, char * inputFile) {
 	for (; counter < MEMSIZE; counter++) {
 		instrMem[counter] = 0;
 	}
+
+	// Fill data memory with zeros
+	for (counter = 0; counter < MEMSIZE; counter++) {
+		dataMem[counter] = 0;
+	}
+
+	int address;
+	char * ptr;
+	while (fscanf(input, "%s", operand) == 1) {
+		address = (unsigned char) strtol(operand, &ptr, 0);
+		fscanf(input, "%s", operand);
+		dataMem[address] = (char) strtol(operand, &ptr, 0);
+	}
+
 	// Close file
 	fclose(input);
 }
@@ -224,7 +238,7 @@ void assemble (char * instrMem, char * inputFile) {
 void fillDataMemory (char * dataMem, char * inputFile) {
         FILE *input = fopen(inputFile, "r" );
 	int tempOp;
-	int counter = 0; // Count number of operand
+	int counter = 0; // Count number of operands
 	while (fscanf(input, "%d", &tempOp) == 1 && counter < MEMSIZE) {
 		dataMem[counter] = (char) tempOp;
 		counter++;
