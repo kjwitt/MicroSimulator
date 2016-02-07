@@ -25,7 +25,7 @@ class Memory {
 public:
 	Memory();
 	~Memory();
-	char access(bool rw, char addrval, char dataval);
+	char access(bool rw, char addrval, char dataval = 0b00000000);
 
 protected:
 char memarray[255];

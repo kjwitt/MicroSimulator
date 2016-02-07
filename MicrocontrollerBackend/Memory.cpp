@@ -27,7 +27,7 @@ Memory::~Memory() {
 }
 
 //Functions
-char Memory::access(bool rw, char addrval, char dataval = 0b000000){
+char Memory::access(bool rw, char addrval, char dataval){
 	int tempaddrval;
 	tempaddrval = (int)addrval;
 	char output = 0;
