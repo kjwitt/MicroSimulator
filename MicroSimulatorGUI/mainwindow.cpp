@@ -158,9 +158,39 @@ void MainWindow::on_input8_clicked()
 
 void MainWindow::on_pushButtonAssmble_clicked()
 {
-    //QString assemblerCodeText = ui->AssemblyCode->toPlainText();
-    //QByteArray assemblerCodeTextArray = assemblerCodeText.toLatin1();
-    char assemblerFile[] = "C:\\Users\\Wesley Kenyon\\Desktop\\testfile.txt";
+    QString assemblerCodeText = ui->AssemblyCode->toPlainText();
+    QString workspace_1 = QFileDialog::getExistingDirectory(this, tr("Please Choose a Workspace Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    QString inputFullPath = (workspace_1 + "//inputAssembly.txt");
+
+    QFile inputFile(inputFullPath);
+    inputFile.open(QFile::WriteOnly | QFile::Text);
+    QTextStream input(&inputFile);
+    input << assemblerCodeText;
+    inputFile.close();
+
+
+    QByteArray inputFullPathBytes = inputFullPath.toLocal8Bit();
+    char *assemblerFile = new char[inputFullPathBytes.size()+1];
+    strcpy(assemblerFile, inputFullPathBytes.data());
     char instrMem[MEMSIZE];
     assemble(instrMem,assemblerFile);
+    delete [] assemblerFile;
+    QString instrMemFormatted;
+
+    for(int i=0;i<256;i++)
+    {
+        char temp[256];
+        for(int j=0;j<256;j++)
+        {
+            temp[j]='\0';
+        }
+
+        sprintf(temp,"%.02X ",(unsigned char)instrMem[i]);
+        instrMemFormatted.append(temp);
+    }
+
+    //QString instructionMemory = QString::fromLocal8Bit(instrMem);
+
+    ui -> InstructionMemory->setPlainText(instrMemFormatted);
 }
