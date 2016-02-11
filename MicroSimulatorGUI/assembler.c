@@ -11,6 +11,8 @@
  */
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "hexconstants.h"
 #include "assembler.h"
 
@@ -222,7 +224,7 @@ void assemble (char * instrMem, char * dataMem, char * inputFile) {
 
 	// Fill data memory with zeros
 	for (counter = 0; counter < MEMSIZE; counter++) {
-		dataMem[counter] = 0;
+        dataMem[counter] = 0;
 	}
 
 	int address;
@@ -230,7 +232,7 @@ void assemble (char * instrMem, char * dataMem, char * inputFile) {
 	while (fscanf(input, "%s", operand) == 1) {
 		address = (unsigned char) strtol(operand, &ptr, 0);
 		fscanf(input, "%s", operand);
-		dataMem[address] = (char) strtol(operand, &ptr, 0);
+        dataMem[address] = (char) strtol(operand, &ptr, 0);
 	}
 
 	// Close file

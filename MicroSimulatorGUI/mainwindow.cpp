@@ -173,24 +173,26 @@ void MainWindow::on_pushButtonAssmble_clicked()
     QByteArray inputFullPathBytes = inputFullPath.toLocal8Bit();
     char *assemblerFile = new char[inputFullPathBytes.size()+1];
     strcpy(assemblerFile, inputFullPathBytes.data());
-    char instrMem[MEMSIZE];
-    assemble(instrMem,assemblerFile);
+    char instrMem[MEMSIZE], dataMem[MEMSIZE];
+    assemble(instrMem, dataMem, assemblerFile);
     delete [] assemblerFile;
-    QString instrMemFormatted;
+    QString instrMemFormatted, dataMemFormatted;
 
     for(int i=0;i<256;i++)
     {
-        char temp[256];
+        char temp1[256], temp2[256];
         for(int j=0;j<256;j++)
         {
-            temp[j]='\0';
+            temp1[j]='\0';
+            temp2[j]='\0';
         }
 
-        sprintf(temp,"%.02X ",(unsigned char)instrMem[i]);
-        instrMemFormatted.append(temp);
+        sprintf(temp1,"%.02X ",(unsigned char)instrMem[i]);
+        sprintf(temp2,"%.02X ",(unsigned char)dataMem[i]);
+        instrMemFormatted.append(temp1);
+        dataMemFormatted.append(temp2);
     }
 
-    //QString instructionMemory = QString::fromLocal8Bit(instrMem);
-
     ui -> InstructionMemory->setPlainText(instrMemFormatted);
+    ui -> MainMemory->setPlainText(dataMemFormatted);
 }
