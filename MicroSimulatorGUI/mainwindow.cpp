@@ -196,3 +196,39 @@ void MainWindow::on_pushButtonAssmble_clicked()
     ui -> InstructionMemory->setPlainText(instrMemFormatted);
     ui -> MainMemory->setPlainText(dataMemFormatted);
 }
+
+void MainWindow::on_pushButtonStep_clicked()
+{
+    //call the executive function that runs one cycle
+}
+
+void MainWindow::on_pushButtonRun_clicked()
+{
+    // define conditional character arrays
+    QString numbers = "0123456789";
+
+    //get the contents of the break line text box
+    QString lineBreaks = ui->lineBreakText->toPlainText();
+
+    //calculate how many lines to run
+    QString run = "";
+    for (int i=0; i<lineBreaks.length(); i++){
+        if (!numbers.contains(lineBreaks[i]))
+        {
+            //convert 'run' to an int
+            int runs = run.toInt();
+
+            //call the executive funtion that runs 'n' number of instructions, where 'n' is 'runs'
+
+            //reset the value of run
+            run = "";
+
+            //pause execution; not sure how to implement yet
+
+        }
+        else
+        {
+            run= run + lineBreaks[i];
+        }
+    }
+}
