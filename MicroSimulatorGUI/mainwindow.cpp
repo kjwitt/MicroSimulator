@@ -23,6 +23,12 @@ extern "C"
 QTextEdit** instrMem;
 QTextEdit** dataMem;
 
+bool input[8];
+
+QTextCharFormat highlight;
+
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -48,19 +54,19 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->dataMemGrid->setAlignment(Qt::AlignCenter);
     }
 
-    char text[50];
+    //char text[50];
 
     for (int i=0; i<mem_size; i++)
     {
-        sprintf(text, "%.02X", i);
+        //sprintf(text, "%.02X", i);
 
-        instrMem[i]->setText(text);
+        instrMem[i]->setText("  ");
         instrMem[i]->setFont(QFont ("Consolas", 12));
         instrMem[i]->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         instrMem[i]->setAlignment(Qt::AlignHCenter);
         instrMem[i]->setAlignment(Qt::AlignCenter);
 
-        dataMem[i]->setText(text);
+        dataMem[i]->setText("  ");
         dataMem[i]->setFont(QFont ("Consolas", 12));
         dataMem[i]->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         dataMem[i]->setAlignment(Qt::AlignHCenter);
@@ -165,46 +171,99 @@ void MainWindow::on_Editor_Window_textChanged()
 
 void MainWindow::on_input1_clicked()
 {
-    ui->input1->setText("1");
-
+    char temp;
+    input[0] = !input[0];
+    input[0] ? temp='1' : temp='0';
+    ui->input1->setText(QString("0:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input2_clicked()
 {
-    ui->input2->setText("1");
+    char temp;
+    input[1] = !input[1];
+    input[1] ? temp='1' : temp='0';
+    ui->input2->setText(QString("1:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input3_clicked()
 {
-    ui->input3->setText("1");
+    char temp;
+    input[2] = !input[2];
+    input[2] ? temp='1' : temp='0';
+    ui->input3->setText(QString("2:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input4_clicked()
 {
-    ui->input4->setText("1");
+    char temp;
+    input[3] = !input[3];
+    input[3] ? temp='1' : temp='0';
+    ui->input4->setText(QString("3:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input5_clicked()
 {
-    ui->input5->setText("1");
+    char temp;
+    input[4] = !input[4];
+    input[4] ? temp='1' : temp='0';
+    ui->input5->setText(QString("4:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input6_clicked()
 {
-    ui->input6->setText("1");
+    char temp;
+    input[5] = !input[5];
+    input[5] ? temp='1' : temp='0';
+    ui->input6->setText(QString("5:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input7_clicked()
 {
-    ui->input7->setText("1");
+    char temp;
+    input[6] = !input[6];
+    input[6] ? temp='1' : temp='0';
+    ui->input7->setText(QString("6:")+QChar(temp));
+    update_input_mem();
 }
 
 void MainWindow::on_input8_clicked()
 {
-    ui->input8->setText("1");
+    char temp;
+    input[7] = !input[7];
+    input[7] ? temp='1' : temp='0';
+    ui->input8->setText(QString("7:")+QChar(temp));
+    update_input_mem();
 }
 
+void MainWindow::update_input_mem()
+{
+    highlight.setBackground(Qt::yellow);
+    QString temp_formatted;
+    unsigned char input_hex = 0;
+    for(int i=0;i<8;i++)
+    {
+        input_hex |= input[i]<<i;
+    }
 
+    char temp[8];
+    sprintf(temp,"%.02X ",input_hex);
+    temp_formatted.append(temp);
+
+    dataMem[255]->setText(temp_formatted);
+    QTextCursor cursor(dataMem[255]->document());
+    cursor.setPosition(0, QTextCursor::MoveAnchor);
+    cursor.setPosition(2, QTextCursor::KeepAnchor);
+    cursor.setCharFormat(highlight);
+
+    //ui -> MainMemory -> appendPlainText(temp_formatted);
+
+}
 
 void MainWindow::on_pushButtonAssmble_clicked()
 {
@@ -227,9 +286,6 @@ void MainWindow::on_pushButtonAssmble_clicked()
     delete [] assemblerFile;
     //QString instrMemFormatted, dataMemFormatted;
 
-    QTextCharFormat highlight;
-    highlight.setBackground(Qt::yellow);
-
     for(int i=0;i<256;i++)
     {
         char temp1[256], temp2[256];
@@ -245,15 +301,15 @@ void MainWindow::on_pushButtonAssmble_clicked()
         instrMem[i]->setText(temp1);
         dataMem[i]->setText(temp2);
 
-        QTextCursor instrCursor(instrMem[i]->document());
-        instrCursor.setPosition(0, QTextCursor::MoveAnchor);
-        instrCursor.setPosition(2, QTextCursor::KeepAnchor);
-        instrCursor.setCharFormat(highlight);
+//        QTextCursor instrCursor(instrMem[i]->document());
+//        instrCursor.setPosition(0, QTextCursor::MoveAnchor);
+//        instrCursor.setPosition(2, QTextCursor::KeepAnchor);
+//        instrCursor.setCharFormat(highlight);
 
-        QTextCursor dataCursor(dataMem[i]->document());
-        dataCursor.setPosition(0, QTextCursor::MoveAnchor);
-        dataCursor.setPosition(2, QTextCursor::KeepAnchor);
-        dataCursor.setCharFormat(highlight);
+//        QTextCursor dataCursor(dataMem[i]->document());
+//        dataCursor.setPosition(0, QTextCursor::MoveAnchor);
+//        dataCursor.setPosition(2, QTextCursor::KeepAnchor);
+//        dataCursor.setCharFormat(highlight);
 
         //instrMemFormatted.append(temp1);
         //dataMemFormatted.append(temp2);

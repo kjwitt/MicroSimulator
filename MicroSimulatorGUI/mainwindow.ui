@@ -882,26 +882,29 @@
           <x>480</x>
           <y>36</y>
           <width>60</width>
-          <height>251</height>
+          <height>320</height>
          </rect>
         </property>
         <property name="minimumSize">
          <size>
           <width>60</width>
-          <height>251</height>
+          <height>320</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>60</width>
-          <height>251</height>
+          <height>320</height>
          </size>
         </property>
         <property name="font">
          <font>
           <family>Consolas</family>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
          </font>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
         <property name="undoRedoEnabled">
          <bool>false</bool>

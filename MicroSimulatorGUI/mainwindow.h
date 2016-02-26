@@ -65,6 +65,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    void update_input_mem();
 };
 
 #endif // MAINWINDOW_H
