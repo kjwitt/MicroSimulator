@@ -63,6 +63,10 @@ private slots:
 
     void on_pushButtonRun_clicked();
 
+public slots:
+
+    void update_output();
+
 private:
     Ui::MainWindow *ui;
     void update_input_mem();

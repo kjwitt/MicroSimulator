@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>903</height>
+    <height>960</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -291,65 +291,13 @@
          </property>
         </widget>
        </widget>
-       <widget class="QSplitter" name="splitter_7">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>340</y>
-          <width>256</width>
-          <height>205</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="lineBreakLabel">
-         <property name="text">
-          <string>Enter Breakpoint Line Numbers:</string>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="lineBreakText"/>
-       </widget>
-       <widget class="QSplitter" name="splitter_5">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>570</y>
-          <width>75</width>
-          <height>92</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QPushButton" name="pushButtonAssmble">
-         <property name="text">
-          <string>Assemble</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButtonStep">
-         <property name="text">
-          <string>Step</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButtonRun">
-         <property name="text">
-          <string>Run</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButtonStop">
-         <property name="text">
-          <string>Stop</string>
-         </property>
-        </widget>
-       </widget>
        <widget class="QPlainTextEdit" name="AssemblyCode">
         <property name="geometry">
          <rect>
           <x>9</x>
           <y>47</y>
           <width>256</width>
-          <height>192</height>
+          <height>521</height>
          </rect>
         </property>
         <property name="maximumSize">
@@ -375,12 +323,15 @@
         <property name="geometry">
          <rect>
           <x>550</x>
-          <y>39</y>
+          <y>30</y>
           <width>461</width>
           <height>331</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="instrMemGrid">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <property name="spacing">
           <number>0</number>
          </property>
@@ -389,235 +340,8 @@
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>270</x>
-          <y>120</y>
-          <width>203</width>
-          <height>583</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="ProgramCounter">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Program Counter</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="PCoutput">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="plainText">
-            <string>00</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="InstructionRegisterLabel">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Instruction Register</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="IRotuput">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="plainText">
-            <string>00</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="MemoryAddressBus">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Memory Address Bus</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="MABoutput">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="plainText">
-            <string>00</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="MemoryDataBus">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Memory Data Bus</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="MDBoutput">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="plainText">
-            <string>00</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="Accumulator">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Accumulator</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="ACoutput">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="plainText">
-            <string>00</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>700</y>
+          <x>490</x>
+          <y>740</y>
           <width>322</width>
           <height>128</height>
          </rect>
@@ -852,8 +576,8 @@
        <widget class="QLabel" name="InstructionMemoryLabel">
         <property name="geometry">
          <rect>
-          <x>480</x>
-          <y>9</y>
+          <x>490</x>
+          <y>10</y>
           <width>181</width>
           <height>22</height>
          </rect>
@@ -876,69 +600,11 @@
          <string>Instruction Memory</string>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="InstructionMemoryAddresses">
-        <property name="geometry">
-         <rect>
-          <x>480</x>
-          <y>36</y>
-          <width>60</width>
-          <height>320</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>320</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>320</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Consolas</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-        <property name="undoRedoEnabled">
-         <bool>false</bool>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="plainText">
-         <string>0x00
-0x10
-0x20
-0x30
-0x40
-0x50
-0x60
-0x70
-0x80
-0x90
-0xA0
-0xB0
-0xC0
-0xD0
-0xE0
-0xF0</string>
-        </property>
-        <property name="backgroundVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
        <widget class="QLabel" name="MainMemoryLabel">
         <property name="geometry">
          <rect>
-          <x>480</x>
-          <y>370</y>
+          <x>490</x>
+          <y>380</y>
           <width>111</width>
           <height>22</height>
          </rect>
@@ -961,65 +627,388 @@
          <string>Main Memory</string>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="MainMemoryAddresses">
+       <widget class="QWidget" name="gridLayoutWidget_3">
         <property name="geometry">
          <rect>
-          <x>480</x>
-          <y>397</y>
-          <width>60</width>
-          <height>251</height>
+          <x>490</x>
+          <y>30</y>
+          <width>51</width>
+          <height>331</height>
          </rect>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>251</height>
-         </size>
+        <layout class="QGridLayout" name="instrMemAddrGrid">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>400</y>
+          <width>51</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="dataMemAddrGrid">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QPlainTextEdit" name="PCoutput">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>150</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
         </property>
         <property name="maximumSize">
          <size>
-          <width>60</width>
-          <height>251</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="font">
          <font>
           <family>Consolas</family>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
          </font>
-        </property>
-        <property name="undoRedoEnabled">
-         <bool>false</bool>
         </property>
         <property name="readOnly">
          <bool>true</bool>
         </property>
         <property name="plainText">
-         <string>0x00
-0x10
-0x20
-0x30
-0x40
-0x50
-0x60
-0x70
-0x80
-0x90
-0xA0
-0xB0
-0xC0
-0xD0
-0xE0
-0xF0</string>
+         <string>00</string>
         </property>
-        <property name="backgroundVisible">
-         <bool>false</bool>
+       </widget>
+       <widget class="QLabel" name="ProgramCounter">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>120</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Program Counter</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="InstructionRegisterLabel">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>200</y>
+          <width>201</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Instruction Register</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="IRotuput">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>230</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string>00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="MemoryAddressBus">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>280</y>
+          <width>180</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Memory Address Bus</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="MABoutput">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>310</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string>00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="MemoryDataBus">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>360</y>
+          <width>150</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Memory Data Bus</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="MDBoutput">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>390</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string>00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Accumulator">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>440</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Accumulator</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="ACoutput">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>470</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string>00</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonAssmble">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>540</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Assemble</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonStep">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>700</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Step</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonRun">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>620</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonStop">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>780</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Stop</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lineBreakLabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>570</y>
+          <width>151</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Enter Breakpoint Line Numbers:</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="lineBreakText">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>588</y>
+          <width>251</width>
+          <height>281</height>
+         </rect>
         </property>
        </widget>
        <zorder>InstructionMemoryLabel</zorder>
-       <zorder>InstructionMemoryAddresses</zorder>
        <zorder>MainMemoryLabel</zorder>
-       <zorder>MainMemoryAddresses</zorder>
        <zorder>layoutWidget</zorder>
        <zorder>layoutWidget</zorder>
        <zorder>splitter_5</zorder>
@@ -1029,6 +1018,8 @@
        <zorder>AssemblyCodeLabel</zorder>
        <zorder>gridLayoutWidget</zorder>
        <zorder>gridLayoutWidget_2</zorder>
+       <zorder>gridLayoutWidget_3</zorder>
+       <zorder>gridLayoutWidget_4</zorder>
       </widget>
      </widget>
     </item>
