@@ -223,6 +223,7 @@ void MainWindow::on_Add_to_Debug_clicked()
     }
     temp = ui->Editor_Window->toPlainText();
     pieces = temp.split( ".data" );
+    data_str = "\n\n.data\n\n"+pieces[1];
     pieces[0].remove("\n\n");
     assemble_length = pieces[0].count('\n')+1;
     bp_array = new bool[assemble_length];
@@ -374,7 +375,7 @@ void MainWindow::update_input_mem()
 
 void MainWindow::on_pushButtonAssmble_clicked()
 {
-    QString assemblerCodeText = ui->AssemblyCode->toPlainText();
+    QString assemblerCodeText = ui->AssemblyCode->toPlainText() + data_str;
     QString workspace_1 = QFileDialog::getExistingDirectory(this, tr("Please Choose a Workspace Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     QString inputFullPath = (workspace_1 + "//inputAssembly.txt");

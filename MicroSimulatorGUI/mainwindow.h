@@ -19,6 +19,7 @@ public:
     char _dataMem[256];
     char _instrMem[256];
     int assemble_length;
+    QString data_str;
     bool *bp_array;
     int scroll_offset;
     explicit MainWindow(QWidget *parent = 0);
