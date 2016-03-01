@@ -26,3 +26,6 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     clear_check.ui
+
+RESOURCES += \
+    images.qrc
