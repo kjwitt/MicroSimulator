@@ -248,227 +248,6 @@
          </property>
         </layout>
        </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>740</y>
-          <width>322</width>
-          <height>128</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <item>
-          <widget class="QLabel" name="MainMemoryLabel_2">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Consolas</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>I/O</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QPushButton" name="input1">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="input2">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="input3">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="input4">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QPushButton" name="input5">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="input6">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="input7">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="input8">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLabel" name="output1">
-             <property name="text">
-              <string>output1</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="output2">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>output2</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="output3">
-             <property name="text">
-              <string>output3</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="output4">
-             <property name="text">
-              <string>output4</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QLabel" name="output5">
-             <property name="text">
-              <string>output5</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="output6">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>output6</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="output7">
-             <property name="text">
-              <string>output7</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="output8">
-             <property name="text">
-              <string>output8</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
        <widget class="QWidget" name="gridLayoutWidget_2">
         <property name="geometry">
          <rect>
@@ -511,7 +290,7 @@
          <string>Instruction Memory</string>
         </property>
        </widget>
-       <widget class="QLabel" name="MainMemoryLabel">
+       <widget class="QLabel" name="DataMemoryLabel">
         <property name="geometry">
          <rect>
           <x>490</x>
@@ -843,14 +622,19 @@
          <string>00</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButtonAssmble">
+       <widget class="QPushButton" name="pushButtonAssemble">
         <property name="geometry">
          <rect>
-          <x>280</x>
+          <x>340</x>
           <y>540</y>
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>Assemble</string>
@@ -859,11 +643,16 @@
        <widget class="QPushButton" name="pushButtonStep">
         <property name="geometry">
          <rect>
-          <x>280</x>
+          <x>340</x>
           <y>700</y>
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>Step</string>
@@ -872,11 +661,16 @@
        <widget class="QPushButton" name="pushButtonRun">
         <property name="geometry">
          <rect>
-          <x>280</x>
+          <x>340</x>
           <y>620</y>
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>Run</string>
@@ -885,11 +679,16 @@
        <widget class="QPushButton" name="pushButtonStop">
         <property name="geometry">
          <rect>
-          <x>280</x>
+          <x>340</x>
           <y>780</y>
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>Stop</string>
@@ -921,10 +720,10 @@
        <widget class="QWidget" name="gridLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>710</x>
-          <y>740</y>
-          <width>301</width>
-          <height>141</height>
+          <x>490</x>
+          <y>770</y>
+          <width>521</width>
+          <height>101</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="ioGrid">
@@ -1069,6 +868,33 @@
          </rect>
         </property>
        </widget>
+       <widget class="QLabel" name="IOLabel">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>750</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Input / Output</string>
+        </property>
+       </widget>
        <zorder>widget</zorder>
        <zorder>checkBoxCarry</zorder>
        <zorder>checkBoxZero</zorder>
@@ -1084,15 +910,14 @@
        <zorder>MDBoutput</zorder>
        <zorder>Accumulator</zorder>
        <zorder>ACoutput</zorder>
-       <zorder>pushButtonAssmble</zorder>
+       <zorder>pushButtonAssemble</zorder>
        <zorder>pushButtonStep</zorder>
        <zorder>pushButtonRun</zorder>
        <zorder>pushButtonStop</zorder>
        <zorder>lineBreakLabel</zorder>
        <zorder>lineBreakText</zorder>
        <zorder>InstructionMemoryLabel</zorder>
-       <zorder>MainMemoryLabel</zorder>
-       <zorder>layoutWidget</zorder>
+       <zorder>DataMemoryLabel</zorder>
        <zorder>AssemblyCode</zorder>
        <zorder>AssemblyCodeLabel</zorder>
        <zorder>gridLayoutWidget</zorder>
@@ -1101,6 +926,7 @@
        <zorder>gridLayoutWidget_4</zorder>
        <zorder>gridLayoutWidget_5</zorder>
        <zorder>gridLayoutWidget_6</zorder>
+       <zorder>IOLabel</zorder>
       </widget>
      </widget>
     </item>

@@ -15,12 +15,12 @@ class MainWindow : public QMainWindow
 
 public:
 
-    bool input[8];
     char _dataMem[256];
     char _instrMem[256];
     int assemble_length;
     QString data_str;
     bool *bp_array;
+    bool in_array[8];
     int scroll_offset;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -51,23 +51,9 @@ private slots:
 
     void on_Editor_Window_textChanged();
 
-    void on_input1_clicked();
+    void update_input();
 
-    void on_input2_clicked();
-
-    void on_input3_clicked();
-
-    void on_input4_clicked();
-
-    void on_input5_clicked();
-
-    void on_input6_clicked();
-
-    void on_input7_clicked();
-
-    void on_input8_clicked();
-
-    void on_pushButtonAssmble_clicked();
+    void on_pushButtonAssemble_clicked();
 
     void on_pushButtonStep_clicked();
 
