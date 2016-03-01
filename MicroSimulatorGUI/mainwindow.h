@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#define MAX_DEBUG_LENGTH 10000
+
 namespace Ui {
 class MainWindow;
 }
@@ -16,6 +18,9 @@ public:
     bool input[8];
     char _dataMem[256];
     char _instrMem[256];
+    int assemble_length;
+    bool *bp_array;
+    int scroll_offset;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -70,6 +75,8 @@ private slots:
 public slots:
 
     void update_output();
+    void update_breakpoints();
+    void assembly_scroll(int);
 
 private:
     Ui::MainWindow *ui;
@@ -77,6 +84,7 @@ private:
     void update_input_mem();
     void update_instrMem();
     void update_dataMem();
+    void update_bp_GUI();
 };
 
 #endif // MAINWINDOW_H

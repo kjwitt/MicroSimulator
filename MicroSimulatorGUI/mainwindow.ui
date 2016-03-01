@@ -202,10 +202,10 @@
        <widget class="CodeEditor" name="AssemblyCode">
         <property name="geometry">
          <rect>
-          <x>29</x>
+          <x>30</x>
           <y>37</y>
           <width>241</width>
-          <height>521</height>
+          <height>525</height>
          </rect>
         </property>
         <property name="maximumSize">
@@ -225,6 +225,9 @@
         </property>
         <property name="tabStopWidth">
          <number>60</number>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::NoTextInteraction</set>
         </property>
        </widget>
        <widget class="QWidget" name="gridLayoutWidget">
@@ -1056,6 +1059,17 @@
          </property>
         </layout>
        </widget>
+       <widget class="QWidget" name="widget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>6</x>
+          <y>37</y>
+          <width>41</width>
+          <height>525</height>
+         </rect>
+        </property>
+       </widget>
+       <zorder>widget</zorder>
        <zorder>checkBoxCarry</zorder>
        <zorder>checkBoxZero</zorder>
        <zorder>StatusRegister</zorder>
