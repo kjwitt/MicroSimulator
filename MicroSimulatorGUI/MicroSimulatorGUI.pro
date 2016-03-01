@@ -15,12 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     clear_check.cpp \
-    assembler.c
+    assembler.c \
+    codeeditor.cpp
 
 HEADERS  += mainwindow.h \
     clear_check.h \
     assembler.h \
-    hexconstants.h
+    hexconstants.h \
+    codeeditor.h
 
 FORMS    += mainwindow.ui \
     clear_check.ui

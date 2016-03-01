@@ -12,6 +12,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
+    bool input[8];
+    char _dataMem[256];
+    char _instrMem[256];
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -69,6 +73,7 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    char array_to_hex(char array[2]);
     void update_input_mem();
     void update_instrMem();
     void update_dataMem();

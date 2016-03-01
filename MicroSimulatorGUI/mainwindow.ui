@@ -50,7 +50,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QPlainTextEdit" name="Editor_Window">
+         <widget class="CodeEditor" name="Editor_Window">
           <property name="font">
            <font>
             <family>Consolas</family>
@@ -171,7 +171,7 @@
          <rect>
           <x>9</x>
           <y>9</y>
-          <width>130</width>
+          <width>271</width>
           <height>22</height>
          </rect>
         </property>
@@ -199,104 +199,12 @@
          <set>Qt::LinksAccessibleByMouse|Qt::TextEditable</set>
         </property>
        </widget>
-       <widget class="QSplitter" name="splitter_6">
+       <widget class="CodeEditor" name="AssemblyCode">
         <property name="geometry">
          <rect>
-          <x>271</x>
-          <y>15</y>
-          <width>160</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="StatusRegister">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Consolas</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Status Registers</string>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="checkBoxZero">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Consolas</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>ZERO</string>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="checkBoxCarry">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Consolas</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>CARRY</string>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="checkBoxNegative">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Consolas</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>NEGATIVE</string>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QPlainTextEdit" name="AssemblyCode">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>47</y>
-          <width>256</width>
+          <x>29</x>
+          <y>37</y>
+          <width>241</width>
           <height>521</height>
          </rect>
         </property>
@@ -309,7 +217,7 @@
         <property name="font">
          <font>
           <family>Consolas</family>
-          <pointsize>12</pointsize>
+          <pointsize>13</pointsize>
          </font>
         </property>
         <property name="readOnly">
@@ -340,7 +248,7 @@
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>490</x>
+          <x>380</x>
           <y>740</y>
           <width>322</width>
           <height>128</height>
@@ -624,7 +532,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Main Memory</string>
+         <string>Data Memory</string>
         </property>
        </widget>
        <widget class="QWidget" name="gridLayoutWidget_3">
@@ -660,7 +568,7 @@
        <widget class="QPlainTextEdit" name="PCoutput">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>150</y>
           <width>32</width>
           <height>32</height>
@@ -688,7 +596,7 @@
        <widget class="QLabel" name="ProgramCounter">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>120</y>
           <width>151</width>
           <height>22</height>
@@ -715,7 +623,7 @@
        <widget class="QLabel" name="InstructionRegisterLabel">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>200</y>
           <width>201</width>
           <height>22</height>
@@ -742,7 +650,7 @@
        <widget class="QPlainTextEdit" name="IRotuput">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>230</y>
           <width>32</width>
           <height>32</height>
@@ -770,7 +678,7 @@
        <widget class="QLabel" name="MemoryAddressBus">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>280</y>
           <width>180</width>
           <height>22</height>
@@ -797,7 +705,7 @@
        <widget class="QPlainTextEdit" name="MABoutput">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>310</y>
           <width>32</width>
           <height>32</height>
@@ -825,7 +733,7 @@
        <widget class="QLabel" name="MemoryDataBus">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>360</y>
           <width>150</width>
           <height>22</height>
@@ -852,7 +760,7 @@
        <widget class="QPlainTextEdit" name="MDBoutput">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>390</y>
           <width>32</width>
           <height>32</height>
@@ -880,7 +788,7 @@
        <widget class="QLabel" name="Accumulator">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>440</y>
           <width>111</width>
           <height>22</height>
@@ -907,7 +815,7 @@
        <widget class="QPlainTextEdit" name="ACoutput">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>470</y>
           <width>32</width>
           <height>32</height>
@@ -935,7 +843,7 @@
        <widget class="QPushButton" name="pushButtonAssmble">
         <property name="geometry">
          <rect>
-          <x>330</x>
+          <x>280</x>
           <y>540</y>
           <width>91</width>
           <height>61</height>
@@ -948,7 +856,7 @@
        <widget class="QPushButton" name="pushButtonStep">
         <property name="geometry">
          <rect>
-          <x>330</x>
+          <x>280</x>
           <y>700</y>
           <width>91</width>
           <height>61</height>
@@ -961,7 +869,7 @@
        <widget class="QPushButton" name="pushButtonRun">
         <property name="geometry">
          <rect>
-          <x>330</x>
+          <x>280</x>
           <y>620</y>
           <width>91</width>
           <height>61</height>
@@ -974,7 +882,7 @@
        <widget class="QPushButton" name="pushButtonStop">
         <property name="geometry">
          <rect>
-          <x>330</x>
+          <x>280</x>
           <y>780</y>
           <width>91</width>
           <height>61</height>
@@ -1002,24 +910,183 @@
          <rect>
           <x>10</x>
           <y>588</y>
-          <width>251</width>
+          <width>261</width>
           <height>281</height>
          </rect>
         </property>
        </widget>
+       <widget class="QWidget" name="gridLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>740</y>
+          <width>301</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="ioGrid">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QCheckBox" name="checkBoxCarry">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>63</y>
+          <width>160</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>CARRY</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBoxZero">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>39</y>
+          <width>160</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>ZERO</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="StatusRegister">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>15</y>
+          <width>160</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Status Registers</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBoxNegative">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>87</y>
+          <width>160</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>NEGATIVE</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>5</x>
+          <y>39</y>
+          <width>21</width>
+          <height>521</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="bpGrid">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <zorder>checkBoxCarry</zorder>
+       <zorder>checkBoxZero</zorder>
+       <zorder>StatusRegister</zorder>
+       <zorder>checkBoxNegative</zorder>
+       <zorder>PCoutput</zorder>
+       <zorder>ProgramCounter</zorder>
+       <zorder>InstructionRegisterLabel</zorder>
+       <zorder>IRotuput</zorder>
+       <zorder>MemoryAddressBus</zorder>
+       <zorder>MABoutput</zorder>
+       <zorder>MemoryDataBus</zorder>
+       <zorder>MDBoutput</zorder>
+       <zorder>Accumulator</zorder>
+       <zorder>ACoutput</zorder>
+       <zorder>pushButtonAssmble</zorder>
+       <zorder>pushButtonStep</zorder>
+       <zorder>pushButtonRun</zorder>
+       <zorder>pushButtonStop</zorder>
+       <zorder>lineBreakLabel</zorder>
+       <zorder>lineBreakText</zorder>
        <zorder>InstructionMemoryLabel</zorder>
        <zorder>MainMemoryLabel</zorder>
        <zorder>layoutWidget</zorder>
-       <zorder>layoutWidget</zorder>
-       <zorder>splitter_5</zorder>
        <zorder>AssemblyCode</zorder>
-       <zorder>splitter_7</zorder>
-       <zorder>splitter_6</zorder>
        <zorder>AssemblyCodeLabel</zorder>
        <zorder>gridLayoutWidget</zorder>
        <zorder>gridLayoutWidget_2</zorder>
        <zorder>gridLayoutWidget_3</zorder>
        <zorder>gridLayoutWidget_4</zorder>
+       <zorder>gridLayoutWidget_5</zorder>
+       <zorder>gridLayoutWidget_6</zorder>
       </widget>
      </widget>
     </item>
@@ -1093,6 +1160,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CodeEditor</class>
+   <extends>QPlainTextEdit</extends>
+   <header>codeeditor.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
