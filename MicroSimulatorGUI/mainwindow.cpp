@@ -276,11 +276,6 @@ void MainWindow::on_actionLoad_Text_File_triggered()
     inputfile.close();
 }
 
-void MainWindow::on_pushButtonAssemble_released()
-{
-
-}
-
 void MainWindow::on_actionAssemble_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
@@ -346,6 +341,12 @@ void MainWindow::on_pushButtonAssemble_clicked()
     QString assemblerCodeText = ui->AssemblyCode->toPlainText() + data_str;
     QString workspace_1 = QFileDialog::getExistingDirectory(this, tr("Please Choose a Workspace Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
+    if(workspace_1 == NULL)
+    {
+        ui->debugWindow->append("Assembler will not run unless a workspace is chosen\n");
+        return;
+    }
+
     QString inputFullPath = (workspace_1 + "//inputAssembly.txt");
 
     QFile inputFile(inputFullPath);
@@ -371,34 +372,33 @@ void MainWindow::on_pushButtonStep_clicked()
 
 void MainWindow::on_pushButtonRun_clicked()
 {
-    // define conditional character arrays
-    QString numbers = "0123456789";
+//    // define conditional character arrays
+//    QString numbers = "0123456789";
 
-    //get the contents of the break line text box
-    QString lineBreaks = ui->lineBreakText->toPlainText();
+//    //get the contents of the break line text box
 
-    //calculate how many lines to run
-    QString run = "";
-    for (int i=0; i<lineBreaks.length(); i++)
-    {
-        if (!numbers.contains(lineBreaks[i]))
-        {
-            //convert 'run' to an int
-            //int runs = run.toInt();
+//    //calculate how many lines to run
+//    QString run = "";
+//    for (int i=0; i<lineBreaks.length(); i++)
+//    {
+//        if (!numbers.contains(lineBreaks[i]))
+//        {
+//            //convert 'run' to an int
+//            //int runs = run.toInt();
 
-            //call the executive funtion that runs 'n' number of instructions, where 'n' is 'runs'
+//            //call the executive funtion that runs 'n' number of instructions, where 'n' is 'runs'
 
-            //reset the value of run
-            run = "";
+//            //reset the value of run
+//            run = "";
 
-            //pause execution; not sure how to implement yet
+//            //pause execution; not sure how to implement yet
 
-        }
-        else
-        {
-            run= run + lineBreaks[i];
-        }
-    }
+//        }
+//        else
+//        {
+//            run= run + lineBreaks[i];
+//        }
+//    }
 }
 
 char MainWindow::array_to_hex(char array[2])

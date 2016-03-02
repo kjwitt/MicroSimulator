@@ -47,8 +47,6 @@ private slots:
 
     void on_actionStop_triggered();
 
-    void on_pushButtonAssemble_released();
-
     void on_Editor_Window_textChanged();
 
     void update_input();

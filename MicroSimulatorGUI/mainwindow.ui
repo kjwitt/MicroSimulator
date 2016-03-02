@@ -694,7 +694,7 @@
          <string>Stop</string>
         </property>
        </widget>
-       <widget class="QTextEdit" name="lineBreakText">
+       <widget class="QTextEdit" name="debugWindow">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -702,6 +702,12 @@
           <width>261</width>
           <height>261</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>10</pointsize>
+         </font>
         </property>
        </widget>
        <widget class="QWidget" name="gridLayoutWidget_5">
@@ -1087,7 +1093,7 @@
        <zorder>pushButtonStep</zorder>
        <zorder>pushButtonRun</zorder>
        <zorder>pushButtonStop</zorder>
-       <zorder>lineBreakText</zorder>
+       <zorder>debugWindow</zorder>
        <zorder>InstructionMemoryLabel</zorder>
        <zorder>DataMemoryLabel</zorder>
        <zorder>AssemblyCode</zorder>
