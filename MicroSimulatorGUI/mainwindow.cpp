@@ -233,17 +233,23 @@ void MainWindow::on_Add_to_Debug_clicked()
         delete[] bp_array;
     }
     temp = ui->Editor_Window->toPlainText();
-    pieces = temp.split( ".data" );
-    data_str = "\n\n.data\n\n"+pieces[1];
-    pieces[0].remove("\n\n");
-    assemble_length = pieces[0].count('\n')+1;
+    if(temp.contains(".data",Qt::CaseInsensitive))
+    {
+        pieces = temp.split( ".data" );
+        data_str = "\n\n.data\n\n"+pieces[1];
+        temp = pieces[0];
+    }
+    temp.remove("\n\n");
+    assemble_length = temp.count('\n')+1;
+
+
     bp_array = new bool[assemble_length];
     for(int i = 0; i<assemble_length;i++)
     {
         bp_array[i] = false;
     }
     update_breakpoints();
-    ui->AssemblyCode->setPlainText(pieces[0]);
+    ui->AssemblyCode->setPlainText(temp);
     ui->AssemblyCodeLabel->setStyleSheet("QLabel {color: black;}");
     ui->AssemblyCodeLabel->setText("Assembly Code");
     ui->tabWidget->setCurrentIndex(1);
@@ -640,4 +646,23 @@ void MainWindow::assembly_scroll(int index)
 {
     scroll_offset=index;
     update_bp_GUI();
+}
+
+void MainWindow::on_CSDial_valueChanged(int value)
+{
+    ui->CSDisplay->setPlainText(QString::number(value));
+}
+
+void MainWindow::on_checkBoxFullSpeed_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->CSDisplay->setDisabled(true);
+        ui->CSDial->setDisabled(true);
+    }
+    else
+    {
+        ui->CSDisplay->setDisabled(false);
+        ui->CSDial->setDisabled(false);
+    }
 }

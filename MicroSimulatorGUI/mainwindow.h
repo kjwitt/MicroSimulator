@@ -59,6 +59,10 @@ private slots:
 
     void on_pushButtonRun_clicked();
 
+    void on_checkBoxFullSpeed_toggled(bool checked);
+
+    void on_CSDial_valueChanged(int value);
+
 public slots:
 
     void update_output();

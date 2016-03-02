@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>960</height>
+    <width>1022</width>
+    <height>943</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -625,10 +625,10 @@
        <widget class="QPushButton" name="pushButtonAssemble">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>540</y>
-          <width>91</width>
-          <height>61</height>
+          <x>280</x>
+          <y>630</y>
+          <width>201</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -643,10 +643,10 @@
        <widget class="QPushButton" name="pushButtonStep">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>700</y>
-          <width>91</width>
-          <height>61</height>
+          <x>280</x>
+          <y>780</y>
+          <width>201</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -661,10 +661,10 @@
        <widget class="QPushButton" name="pushButtonRun">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>620</y>
-          <width>91</width>
-          <height>61</height>
+          <x>280</x>
+          <y>730</y>
+          <width>201</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -673,16 +673,16 @@
          </font>
         </property>
         <property name="text">
-         <string>Run</string>
+         <string>Run to Breakpoint</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonStop">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>780</y>
-          <width>91</width>
-          <height>61</height>
+          <x>280</x>
+          <y>830</y>
+          <width>201</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -694,26 +694,13 @@
          <string>Stop</string>
         </property>
        </widget>
-       <widget class="QLabel" name="lineBreakLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>570</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Enter Breakpoint Line Numbers:</string>
-        </property>
-       </widget>
        <widget class="QTextEdit" name="lineBreakText">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>588</y>
+          <y>610</y>
           <width>261</width>
-          <height>281</height>
+          <height>261</height>
          </rect>
         </property>
        </widget>
@@ -895,6 +882,192 @@
          <string>Input / Output</string>
         </property>
        </widget>
+       <widget class="QLabel" name="L_DebugOutput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>580</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Debug Output</string>
+        </property>
+       </widget>
+       <widget class="QDial" name="CSDial">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>530</y>
+          <width>50</width>
+          <height>64</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>99</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+        <property name="pageStep">
+         <number>10</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="ClockSpeed_L">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>520</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Clock Speed (Hz)</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonRun_2">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>680</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="L_Controls">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>600</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Controls</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="CSDisplay">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>550</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="plainText">
+         <string>1</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBoxFullSpeed">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>550</y>
+          <width>61</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Full</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
        <zorder>widget</zorder>
        <zorder>checkBoxCarry</zorder>
        <zorder>checkBoxZero</zorder>
@@ -914,7 +1087,6 @@
        <zorder>pushButtonStep</zorder>
        <zorder>pushButtonRun</zorder>
        <zorder>pushButtonStop</zorder>
-       <zorder>lineBreakLabel</zorder>
        <zorder>lineBreakText</zorder>
        <zorder>InstructionMemoryLabel</zorder>
        <zorder>DataMemoryLabel</zorder>
@@ -927,6 +1099,13 @@
        <zorder>gridLayoutWidget_5</zorder>
        <zorder>gridLayoutWidget_6</zorder>
        <zorder>IOLabel</zorder>
+       <zorder>L_DebugOutput</zorder>
+       <zorder>CSDial</zorder>
+       <zorder>ClockSpeed_L</zorder>
+       <zorder>pushButtonRun_2</zorder>
+       <zorder>L_Controls</zorder>
+       <zorder>CSDisplay</zorder>
+       <zorder>checkBoxFullSpeed</zorder>
       </widget>
      </widget>
     </item>
@@ -937,7 +1116,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
+     <width>1022</width>
      <height>21</height>
     </rect>
    </property>
