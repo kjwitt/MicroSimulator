@@ -429,7 +429,7 @@
          <string>Instruction Register</string>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="IRotuput">
+       <widget class="QPlainTextEdit" name="IRoutput">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -1082,7 +1082,7 @@
        <zorder>PCoutput</zorder>
        <zorder>ProgramCounter</zorder>
        <zorder>InstructionRegisterLabel</zorder>
-       <zorder>IRotuput</zorder>
+       <zorder>IRoutput</zorder>
        <zorder>MemoryAddressBus</zorder>
        <zorder>MABoutput</zorder>
        <zorder>MemoryDataBus</zorder>

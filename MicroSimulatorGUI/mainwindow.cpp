@@ -181,6 +181,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->widget->setPalette(Pal);
     bp_array = NULL;
     assemble_length = 0;
+
+    _progCount=0;
+    _instrReg=0;
+    _memAddrBus=0;
+    _memDataBus=0;
+    _accum=0;
+
     QScrollBar *vScrollBar_AC = ui->AssemblyCode->verticalScrollBar();
     QObject::connect(vScrollBar_AC,SIGNAL(valueChanged(int)),this,SLOT(assembly_scroll(int)));
 
@@ -188,6 +195,7 @@ MainWindow::MainWindow(QWidget *parent) :
     update_input();
     update_output();
     update_bp_GUI();
+    update_registers();
 }
 
 MainWindow::~MainWindow()
@@ -562,7 +570,7 @@ void MainWindow::update_dataMem()
                 temp2[j]='\0';
             }
 
-            sprintf(temp2,"%.02X ",(unsigned char)_dataMem[i]);
+            sprintf(temp2,"%.02X",(unsigned char)_dataMem[i]);
 
             dataMem[i]->setText(temp2);
 
@@ -665,4 +673,25 @@ void MainWindow::on_checkBoxFullSpeed_toggled(bool checked)
         ui->CSDisplay->setDisabled(false);
         ui->CSDial->setDisabled(false);
     }
+}
+
+void MainWindow::update_registers()
+{
+    char temp0[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+    char temp1[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+    char temp2[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+    char temp3[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+    char temp4[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+
+    sprintf(temp0,"%.02X",(unsigned char)_accum);
+    sprintf(temp1,"%.02X",(unsigned char)_progCount);
+    sprintf(temp2,"%.02X",(unsigned char)_instrReg);
+    sprintf(temp3,"%.02X",(unsigned char)_memDataBus);
+    sprintf(temp4,"%.02X",(unsigned char)_memAddrBus);
+
+    ui->ACoutput->setPlainText(temp0);
+    ui->PCoutput->setPlainText(temp1);
+    ui->IRoutput->setPlainText(temp2);
+    ui->MDBoutput->setPlainText(temp3);
+    ui->MABoutput->setPlainText(temp4);
 }

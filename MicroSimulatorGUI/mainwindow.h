@@ -17,6 +17,13 @@ public:
 
     char _dataMem[256];
     char _instrMem[256];
+    char _progCount;
+    char _instrReg;
+    char _memAddrBus;
+    char _memDataBus;
+    char _accum;
+
+
     int assemble_length;
     QString data_str;
     bool *bp_array;
@@ -74,6 +81,7 @@ private:
     void update_instrMem();
     void update_dataMem();
     void update_bp_GUI();
+    void update_registers();
 };
 
 #endif // MAINWINDOW_H
