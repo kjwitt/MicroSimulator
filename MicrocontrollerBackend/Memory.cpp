@@ -17,9 +17,20 @@
 
 #include "Memory.h"
 
+char * memarray;
+
 Memory::Memory() {
 	// TODO Auto-generated constructor stub
-	memarray[255] = {};		//Make sure to clear data in the array during initialization
+	memarray = (char *)malloc(sizeof(char)*256);	//Make sure to clear data in the array during initialization
+}
+
+Memory::Memory(char * data) {
+	// TODO Auto-generated constructor stub
+	memarray = (char *)malloc(sizeof(char)*256);		//Make sure to clear data in the array during initialization
+	int i;
+	for (i = 0; i < 256; i++) {
+		memarray[i] = data[i];
+	}
 }
 
 Memory::~Memory() {
@@ -43,3 +54,6 @@ char Memory::access(bool rw, char addrval, char dataval){
 	return output;
 }
 
+char * getMemory() {
+	return memarray;
+}

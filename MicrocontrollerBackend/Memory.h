@@ -21,14 +21,17 @@
 #ifndef MEMORY_H_
 #define MEMORY_H_
 
+#include <cstdlib>
+
 class Memory {
 public:
 	Memory();
+	Memory(char * data);
 	~Memory();
 	char access(bool rw, char addrval, char dataval = 0b00000000);
+	char * getMemory();
 
 protected:
-char memarray[255];
 };
 
 #endif /* MEMORY_H_ */
