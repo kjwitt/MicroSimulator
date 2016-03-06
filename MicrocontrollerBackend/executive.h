@@ -42,4 +42,5 @@ void runXCycles(int x);
  */
 void freeRun();
 
+Controller * getController();
 #endif
