@@ -16,13 +16,27 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     clear_check.cpp \
     assembler.c \
-    codeeditor.cpp
+    codeeditor.cpp \
+    alu.cpp \
+    controller.cpp \
+    executive.cpp \
+    jump.cpp \
+    Memory.cpp \
+    statusflags.cpp
 
 HEADERS  += mainwindow.h \
     clear_check.h \
     assembler.h \
     hexconstants.h \
-    codeeditor.h
+    codeeditor.h \
+    alu.h \
+    constants.h \
+    controller.h \
+    executive.h \
+    jump.h \
+    Memory.h \
+    sr.h \
+    statusflags.h
 
 FORMS    += mainwindow.ui \
     clear_check.ui

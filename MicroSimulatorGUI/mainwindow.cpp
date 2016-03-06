@@ -16,6 +16,9 @@
 #include <stdio.h>
 #include <QScrollBar>
 #include <QIcon>
+#include <QThread>
+#include "executive.h"
+
 //#include "codeeditor.h"
 extern "C"
 {
@@ -694,4 +697,12 @@ void MainWindow::update_registers()
     ui->IRoutput->setPlainText(temp2);
     ui->MDBoutput->setPlainText(temp3);
     ui->MABoutput->setPlainText(temp4);
+}
+
+void MainWindow::on_pushButtonRun_2_clicked()
+{
+    bootstrap(_instrMem,_dataMem);
+    freeRun();
+    update_dataMem();
+    update_instrMem();
 }

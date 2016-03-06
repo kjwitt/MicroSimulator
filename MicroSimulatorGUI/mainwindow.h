@@ -68,6 +68,8 @@ private slots:
 
     void on_CSDial_valueChanged(int value);
 
+    void on_pushButtonRun_2_clicked();
+
 public slots:
 
     void update_output();
