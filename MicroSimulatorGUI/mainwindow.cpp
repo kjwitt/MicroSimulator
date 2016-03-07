@@ -782,6 +782,7 @@ void MainWindow::on_pushButtonRun_clicked()
             QThread::usleep(delay);
         }
     }
+    enable_all();
 }
 
 void MainWindow::on_pushButtonRunBP_clicked()
@@ -812,6 +813,7 @@ void MainWindow::on_pushButtonRunBP_clicked()
             QThread::usleep(delay);
         }
     }
+    enable_all();
 }
 
 void MainWindow::on_pushButtonStep_clicked()
@@ -868,6 +870,11 @@ void MainWindow::on_pushButtonReset_clicked()
 }
 
 void MainWindow::on_pushButtonStop_pressed()
+{
+    stopped = true;
+}
+
+void MainWindow::on_pushButtonStop_clicked()
 {
     stopped = true;
 }

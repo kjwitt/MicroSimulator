@@ -27,7 +27,6 @@ public:
     bool halted;
 
     int clockSpeed;
-    bool halted;
     bool stopped;
     int assemble_length;
     QString data_str;
