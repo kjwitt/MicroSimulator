@@ -1,0 +1,28 @@
+char instruction ;
+char data ;
+
+//MANUAL INPUT 
+//place the values the memory should be at the end of this intruction
+char newACC[] = "00000000";
+// SR new
+char location[] = "00000000";
+string newdata[] = "00000000";
+
+
+// run the bootstarp for setup
+bootstrap(instruction memory);
+
+// call runcylce 
+runCycle();
+
+//Verifies the numbers changed are correct 
+bool ACCverified = true ; 
+bool DATAverified = true ; 
+// SRverified 
+
+	
+if (strcmp (ACC,newACC)) != 0 )
+{ACCverified = false;}
+
+if (strcmp (dataMemory->access(0, location);,newdata)) != 0 )
+{DATAverified = false;}
