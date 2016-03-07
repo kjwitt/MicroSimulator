@@ -18,13 +18,16 @@ public:
 
     char _dataMem[256];
     char _instrMem[256];
-    char _progCount;
-    char _instrReg;
-    char _memAddrBus;
-    char _memDataBus;
-    char _accum;
+    unsigned char _progCount;
+    unsigned char _instrReg;
+    unsigned char _memAddrBus;
+    unsigned char _memDataBus;
+    unsigned char _accum;
     Statusflags _sflags;
 
+    int clockSpeed;
+    bool halted;
+    bool stopped;
     int assemble_length;
     QString data_str;
     bool *bp_array;
@@ -72,6 +75,10 @@ private slots:
     void on_pushButtonRun_clicked();
 
     void on_pushButtonReset_clicked();
+
+    void on_pushButtonStop_clicked();
+
+    void on_pushButtonStop_pressed();
 
 public slots:
 
