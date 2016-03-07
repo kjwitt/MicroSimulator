@@ -30,6 +30,10 @@ static char programCounter;
 static Memory * instrMemory;
 static Memory * dataMemory;
 
+void Controller::setProgramCounter(char _pc)
+{
+    programCounter = _pc;
+}
 
 Controller::Controller(char * instrMem, char * dataMem) {
 	// Create instruction and data memory

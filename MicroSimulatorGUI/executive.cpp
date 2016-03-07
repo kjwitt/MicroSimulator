@@ -5,15 +5,17 @@
 static Controller * ctrl;
 static int cycles; // number of cycles that have been run
 
-void bootstrap(char * instrMem, char * dataMem) {
-	ctrl = (Controller *) malloc(sizeof(Controller));
+void bootstrap(char * instrMem, char * dataMem, char pc) {
+    //ctrl = (Controller *) malloc(sizeof(Controller));
 	ctrl = new Controller(instrMem, dataMem);
+    ctrl->setProgramCounter(pc);
 	cycles = 0;
 }
 
-void runCycle() {
+char runCycle() {
 	cycles++;
 	ctrl->runOneCycle();
+    return ctrl->getProgramCounter();
 }
 
 void runInstruction() {
@@ -31,7 +33,8 @@ void runXCycles(int x) {
 }
 
 void freeRun() {
-	while (ctrl->getProgramCounter() > 255) {
+    //this doesn't work - if the PC never hits 255, this goes on forever.
+    while (ctrl->getProgramCounter() < 255) {
 		runCycle();
 	}
 }

@@ -17,12 +17,12 @@
 /*
  * 
  */
-void bootstrap(char * instrMem, char * dataMem);
+void bootstrap(char * instrMem, char * dataMem, char pc);
 
 /*
  * Runs program for one cycle
  */
-void runCycle();
+char runCycle();
 
 /*
  * Run program for up to 3 cycles to either run one whole instruction or

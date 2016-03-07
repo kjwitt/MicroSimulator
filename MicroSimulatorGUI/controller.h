@@ -31,6 +31,7 @@ public:
   char getProgramCounter();
   char * getInstrMemory();
   char * getDataMemory();
+  void setProgramCounter(char _pc);
 
 protected:
   bool C, Z, N;

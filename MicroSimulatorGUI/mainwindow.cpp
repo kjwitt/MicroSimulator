@@ -701,8 +701,18 @@ void MainWindow::update_registers()
 
 void MainWindow::on_pushButtonRun_2_clicked()
 {
-    bootstrap(_instrMem,_dataMem);
+    bootstrap(_instrMem,_dataMem, _progCount);
     freeRun();
+    _accum = getController()->getAccumulator();
+    _memDataBus = getController()->getDataRegister();
+    _progCount = getController()->getProgramCounter();
+    _instrReg = getController()->getIstructionRegister();
+    for(int i=0;i<256;i++)
+    {
+        _dataMem[i]=getController()->getDataMemory()[i];
+    }
+
+    update_registers();
     update_dataMem();
     update_instrMem();
 }
