@@ -761,7 +761,7 @@ void MainWindow::update_status_flags()
 void MainWindow::on_pushButtonRun_clicked()
 {
     stopped = false;
-    //disable appropriate
+    disable_all();
 
     //run at full
     if(ui->checkBoxFullSpeed->isChecked())
@@ -789,6 +789,7 @@ void MainWindow::on_pushButtonRunBP_clicked()
     stopped = false;
     //disable appropriate
     int starting_pc = _progCount;
+    disable_all();
 
     //run at full
     if(ui->checkBoxFullSpeed->isChecked())
@@ -866,12 +867,44 @@ void MainWindow::on_pushButtonReset_clicked()
     update_instrMem();
 }
 
-void MainWindow::on_pushButtonStop_clicked()
+void MainWindow::on_pushButtonStop_pressed()
 {
     stopped = true;
 }
 
-void MainWindow::on_pushButtonStop_pressed()
+void MainWindow::disable_all()
 {
-    stopped = true;
+    for (int i=0; i<8; i++)
+    {
+        input2[i]->setDisabled(true);
+    }
+    ui->pushButtonAssemble->setDisabled(true);
+    ui->pushButtonRun->setDisabled(true);
+    ui->pushButtonRunBP->setDisabled(true);
+    ui->pushButtonStep->setDisabled(true);
+    ui->pushButtonReset->setDisabled(true);
+    ui->checkBoxFullSpeed->setDisabled(true);
+    ui->CSDial->setDisabled(true);
+    ui->CSDisplay->setDisabled(true);
+    // NOTE: This does not disable stop
+}
+
+void MainWindow::enable_all()
+{
+    for (int i=0; i<8; i++)
+    {
+        input2[i]->setEnabled(true);
+    }
+    ui->pushButtonAssemble->setEnabled(true);
+    ui->pushButtonRun->setEnabled(true);
+    ui->pushButtonRunBP->setEnabled(true);
+    ui->pushButtonStep->setEnabled(true);
+    ui->pushButtonReset->setEnabled(true);
+    ui->checkBoxFullSpeed->setEnabled(true);
+    if (!(ui->checkBoxFullSpeed->isChecked()))
+    {
+        ui->CSDial->setEnabled(true);
+        ui->CSDisplay->setEnabled(true);
+    }
+    // NOTE: This does not enable stop
 }

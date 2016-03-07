@@ -24,6 +24,7 @@ public:
     unsigned char _memDataBus;
     unsigned char _accum;
     Statusflags _sflags;
+    bool halted;
 
     int clockSpeed;
     bool halted;
@@ -95,6 +96,8 @@ private:
     void update_bp_GUI();
     void update_registers();
     void update_status_flags();
+    void disable_all();
+    void enable_all();
 };
 
 #endif // MAINWINDOW_H
