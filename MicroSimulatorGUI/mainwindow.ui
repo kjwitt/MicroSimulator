@@ -7,14 +7,26 @@
     <x>0</x>
     <y>0</y>
     <width>1022</width>
-    <height>768</height>
+    <height>758</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1022</width>
+    <height>758</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1022</width>
+    <height>758</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -1181,7 +1193,6 @@
    <addaction name="menuFile"/>
    <addaction name="menuCommands"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAssemble">
    <property name="text">
     <string>Assemble</string>
