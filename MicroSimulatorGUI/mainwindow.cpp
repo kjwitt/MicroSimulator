@@ -40,16 +40,28 @@ QTextCharFormat highlight;
 QTextCharFormat ghighlight;
 QTextCharFormat unhighlight;
 
+QColor lightred;
+QColor lightgreen;
+QString colorstyle;
+QString lightredstyle;
+QString lightgreenstyle;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);  
 
-    /* Create highlight and unhighlight backgrounds */
+    /* Create highlights and colors */
     highlight.setBackground(QColor(Qt::yellow).lighter(160));
     ghighlight.setBackground(QColor(Qt::green).lighter(160));
     unhighlight.setBackground(Qt::white);
+
+    lightred = QColor(Qt::red).lighter(160);
+    lightgreen = QColor(Qt::green).lighter(160);
+    colorstyle = "background:rgb(%1, %2, %3);";
+    lightredstyle = colorstyle.arg(lightred.red()).arg(lightred.green()).arg(lightred.blue());
+    lightgreenstyle = colorstyle.arg(lightgreen.red()).arg(lightgreen.green()).arg(lightgreen.blue());
 
     /* Initialize cells for use in grids */
     QTextEdit *cells0[mem_size], *cells1[mem_size], *cells2[16], *cells3[16], *cells5[8], *cells7[8];
@@ -88,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
         instrMem[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         instrMem[i]->setAlignment(Qt::AlignHCenter);
         instrMem[i]->setAlignment(Qt::AlignCenter);
+        instrMem[i]->setReadOnly(true);
         _instrMem[i] = 0;
 
         ui->dataMemGrid->addWidget(dataMem[i], i/16, i%16);
@@ -97,6 +110,7 @@ MainWindow::MainWindow(QWidget *parent) :
         dataMem[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         dataMem[i]->setAlignment(Qt::AlignHCenter);
         dataMem[i]->setAlignment(Qt::AlignCenter);
+        dataMem[i]->setReadOnly(true);
         _dataMem[i] = 0;
     }
     ui->instrMemGrid->setAlignment(Qt::AlignCenter);
@@ -130,7 +144,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->instrMemAddrGrid->setAlignment(Qt::AlignCenter);
     ui->dataMemAddrGrid->setAlignment(Qt::AlignCenter);
 
-    /* Set up input and output grid */
+    /* Set up input and output grids */
     input2 = new QPushButton*[8] {cells4[0], cells4[1], cells4[2], cells4[3], cells4[4], cells4[5], cells4[6], cells4[7]};
     output2 = new QPushButton*[8] {cells8[0], cells8[1], cells8[2], cells8[3], cells8[4], cells8[5], cells8[6], cells8[7]};
     inputLabels = new QTextEdit*[8] {cells5[0], cells5[1], cells5[2], cells5[3], cells5[4], cells5[5], cells5[6], cells5[7]};
@@ -139,7 +153,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QString output_labels[8] = {"O0", "O1", "O2", "O3", "O4", "O5", "O6", "O7"};
     for (int i=0; i<8; i++)
     {
-        ui->ioGrid->addWidget(inputLabels[i], 0, 7-i);
+        ui->inputGrid->addWidget(inputLabels[i], 0, 7-i);
         inputLabels[i]->setText(input_labels[i]);
         inputLabels[i]->setFont(QFont ("Consolas", 12));
         inputLabels[i]->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -148,7 +162,7 @@ MainWindow::MainWindow(QWidget *parent) :
         inputLabels[i]->setAlignment(Qt::AlignCenter);
         inputLabels[i]->setReadOnly(true);
 
-        ui->ioGrid->addWidget(outputLabels[i], 2, 7-i);
+        ui->outputGrid->addWidget(outputLabels[i], 0, 7-i);
         outputLabels[i]->setText(output_labels[i]);
         outputLabels[i]->setFont(QFont ("Consolas", 12));
         outputLabels[i]->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -157,20 +171,21 @@ MainWindow::MainWindow(QWidget *parent) :
         outputLabels[i]->setAlignment(Qt::AlignCenter);
         outputLabels[i]->setReadOnly(true);
 
-        ui->ioGrid->addWidget(input2[i], 1, 7-i);
+        ui->inputGrid->addWidget(input2[i], 1, 7-i);
         input2[i]->setText("0");
         input2[i]->setFont(QFont ("Consolas", 12));
-        input2[i]->setStyleSheet("background-color: rgb(255, 102, 102);");
+        input2[i]->setStyleSheet(lightredstyle);
         in_array[i] = 0;
         QObject::connect(input2[i], SIGNAL(clicked()), this, SLOT(update_input()));
 
-        ui->ioGrid->addWidget(output2[i], 3, 7-i);
+        ui->outputGrid->addWidget(output2[i], 1, 7-i);
         output2[i]->setText("0");
         output2[i]->setFont(QFont ("Consolas", 12));
-        output2[i]->setStyleSheet("background-color: rgb(255, 102, 102); color: black;");
+        output2[i]->setStyleSheet(lightredstyle + "color: black;");
         output2[i]->setDisabled(true);
     }
-    ui->ioGrid->setAlignment(Qt::AlignCenter);
+    ui->inputGrid->setAlignment(Qt::AlignCenter);
+    ui->outputGrid->setAlignment(Qt::AlignCenter);
 
     /* Set up breakpoint grid */
     bp = new QPushButton*[26] {cells6[0], cells6[1], cells6[2], cells6[3], cells6[4], cells6[5], cells6[6], cells6[7], cells6[8], cells6[9], cells6[10], cells6[11], cells6[12], cells6[13], cells6[14], cells6[15], cells6[16], cells6[17], cells6[18], cells6[19], cells6[20], cells6[21], cells6[22], cells6[23], cells6[24], cells6[25]};
@@ -346,12 +361,12 @@ void MainWindow::update_input()
             if (!in_array[i])
             {
                 input2[i]->setText("0");
-                input2[i]->setStyleSheet("background-color: rgb(255, 102, 102);");
+                input2[i]->setStyleSheet(lightredstyle);
             }
             else if (in_array[i])
             {
                 input2[i]->setText("1");
-                input2[i]->setStyleSheet("background-color: rgb(102, 255, 102);");
+                input2[i]->setStyleSheet(lightgreenstyle);
             }
         }
     }
@@ -375,11 +390,11 @@ void MainWindow::on_pushButtonAssemble_clicked()
     QString assemblerCodeText = ui->AssemblyCode->toPlainText() + data_str;
     QString workspace_1 = QFileDialog::getExistingDirectory(this, tr("Please Choose a Workspace Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
-    if(workspace_1 == NULL)
-    {
-        ui->debugWindow->append("Assembler will not run unless a workspace is chosen\n");
-        return;
-    }
+//    if(workspace_1 == NULL)
+//    {
+//        ui->debugWindow->append("Assembler will not run unless a workspace is chosen\n");
+//        return;
+//    }
 
     QString inputFullPath = (workspace_1 + "//inputAssembly.txt");
 
@@ -474,12 +489,12 @@ void MainWindow::update_output()
         if(output & 0x01)
         {
             output2[i]->setText("1");
-            output2[i]->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+            output2[i]->setStyleSheet(lightgreenstyle + "color: black");
         }
         else
         {
             output2[i]->setText("0");
-            output2[i]->setStyleSheet("background-color: rgb(255, 102, 102); color: black;");
+            output2[i]->setStyleSheet(lightredstyle + "color: black;");
         }
         output=output>>1;
     }
@@ -708,34 +723,34 @@ void MainWindow::update_status_flags()
     if (_sflags.getc())
     {
         ui->srCarry->setText("1");
-        ui->srCarry->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+        ui->srCarry->setStyleSheet(lightgreenstyle + "color: black");
     }
     else if (!_sflags.getc())
     {
         ui->srCarry->setText("0");
-        ui->srCarry->setStyleSheet("background-color: rgb(255, 102, 102); color: black");
+        ui->srCarry->setStyleSheet(lightredstyle + "color: black");
     }
 
     if (_sflags.getz())
     {
         ui->srZero->setText("1");
-        ui->srZero->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+        ui->srZero->setStyleSheet(lightgreenstyle + "color: black");
     }
     else if (!_sflags.getz())
     {
         ui->srZero->setText("0");
-        ui->srZero->setStyleSheet("background-color: rgb(255, 102, 102); color: black");
+        ui->srZero->setStyleSheet(lightredstyle + "color: black");
     }
 
     if (_sflags.getn())
     {
         ui->srNegative->setText("1");
-        ui->srNegative->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+        ui->srNegative->setStyleSheet(lightgreenstyle + "color: black");
     }
     else if (!_sflags.getn())
     {
         ui->srNegative->setText("0");
-        ui->srNegative->setStyleSheet("background-color: rgb(255, 102, 102); color: black");
+        ui->srNegative->setStyleSheet(lightredstyle + "color: black");
     }
 }
 

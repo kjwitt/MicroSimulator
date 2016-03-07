@@ -706,37 +706,6 @@
          <string>Stop</string>
         </property>
        </widget>
-       <widget class="QTextEdit" name="debugWindow">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>570</y>
-          <width>261</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Consolas</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_5">
-        <property name="geometry">
-         <rect>
-          <x>490</x>
-          <y>770</y>
-          <width>521</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="ioGrid">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-        </layout>
-       </widget>
        <widget class="QLabel" name="StatusRegister">
         <property name="geometry">
          <rect>
@@ -783,7 +752,7 @@
         <property name="geometry">
          <rect>
           <x>6</x>
-          <y>37</y>
+          <y>20</y>
           <width>41</width>
           <height>525</height>
          </rect>
@@ -814,33 +783,6 @@
         </property>
         <property name="text">
          <string>Input / Output</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="L_DebugOutput">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>550</y>
-          <width>151</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Consolas</family>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Debug Output</string>
         </property>
        </widget>
        <widget class="QDial" name="CSDial">
@@ -1116,6 +1058,90 @@
          <string>ZERO</string>
         </property>
        </widget>
+       <widget class="QLabel" name="DataMemoryLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>550</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Input</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>570</y>
+          <width>261</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="inputGrid">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>650</y>
+          <width>261</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="outputGrid">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="DataMemoryLabel_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>630</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Consolas</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Output</string>
+        </property>
+       </widget>
        <zorder>widget</zorder>
        <zorder>StatusRegister</zorder>
        <zorder>PCoutput</zorder>
@@ -1132,7 +1158,6 @@
        <zorder>pushButtonStep</zorder>
        <zorder>pushButtonRunBP</zorder>
        <zorder>pushButtonStop</zorder>
-       <zorder>debugWindow</zorder>
        <zorder>InstructionMemoryLabel</zorder>
        <zorder>DataMemoryLabel</zorder>
        <zorder>AssemblyCode</zorder>
@@ -1141,10 +1166,8 @@
        <zorder>gridLayoutWidget_2</zorder>
        <zorder>gridLayoutWidget_3</zorder>
        <zorder>gridLayoutWidget_4</zorder>
-       <zorder>gridLayoutWidget_5</zorder>
        <zorder>gridLayoutWidget_6</zorder>
        <zorder>IOLabel</zorder>
-       <zorder>L_DebugOutput</zorder>
        <zorder>CSDial</zorder>
        <zorder>ClockSpeed_L</zorder>
        <zorder>pushButtonRun</zorder>
@@ -1158,6 +1181,10 @@
        <zorder>label</zorder>
        <zorder>label_2</zorder>
        <zorder>label_3</zorder>
+       <zorder>DataMemoryLabel_2</zorder>
+       <zorder>gridLayoutWidget_7</zorder>
+       <zorder>gridLayoutWidget_8</zorder>
+       <zorder>DataMemoryLabel_3</zorder>
       </widget>
      </widget>
     </item>
