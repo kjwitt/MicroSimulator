@@ -37,6 +37,7 @@ QTextEdit** outputLabels;
 QPushButton** bp;
 
 QTextCharFormat highlight;
+QTextCharFormat ghighlight;
 QTextCharFormat unhighlight;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -46,7 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);  
 
     /* Create highlight and unhighlight backgrounds */
-    highlight.setBackground(Qt::yellow);
+    highlight.setBackground(QColor(Qt::yellow).lighter(160));
+    ghighlight.setBackground(QColor(Qt::green).lighter(160));
     unhighlight.setBackground(Qt::white);
 
     /* Initialize cells for use in grids */
@@ -491,13 +493,14 @@ void MainWindow::update_instrMem()
 
             instrMem[i]->setText(temp2);
 
+
             QTextCursor cursor(instrMem[i]->document());
             cursor.setPosition(0, QTextCursor::MoveAnchor);
             cursor.setPosition(2, QTextCursor::KeepAnchor);
             cursor.setCharFormat(highlight);
 
             QPalette p = instrMem[i]->palette();
-            p.setColor(QPalette::Base, QColor(255, 255, 0));
+            p.setColor(QPalette::Base, QColor(Qt::yellow).lighter(160));
             instrMem[i]->setPalette(p);
         }
         else
@@ -512,6 +515,22 @@ void MainWindow::update_instrMem()
             instrMem[i]->setPalette(p);
         }
     }
+
+    QTextCursor cursor(instrMem[_progCount]->document());
+    cursor.setPosition(0, QTextCursor::MoveAnchor);
+    cursor.setPosition(2, QTextCursor::KeepAnchor);
+    cursor.setCharFormat(ghighlight);
+
+    QPalette p = instrMem[_progCount]->palette();
+    p.setColor(QPalette::Base, QColor(Qt::green).lighter(160));
+    instrMem[_progCount]->setPalette(p);
+
+    int line = _progCount/2;
+    QTextCursor cursor2 = ui->AssemblyCode->textCursor();
+    cursor2.setPosition(0);
+    cursor2.movePosition(QTextCursor::Down, QTextCursor::MoveAnchor, line);
+    ui->AssemblyCode->setTextCursor(cursor2);
+
 }
 
 void MainWindow::update_dataMem()
@@ -548,7 +567,7 @@ void MainWindow::update_dataMem()
             cursor.setCharFormat(highlight);
 
             QPalette p = dataMem[i]->palette();
-            p.setColor(QPalette::Base, QColor(255, 255, 0));
+            p.setColor(QPalette::Base, QColor(Qt::yellow).lighter(160));
             dataMem[i]->setPalette(p);
         }
         else

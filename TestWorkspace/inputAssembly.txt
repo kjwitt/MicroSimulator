@@ -1,5 +1,2 @@
 LDA #3
 STA 4
-
-.data
-
