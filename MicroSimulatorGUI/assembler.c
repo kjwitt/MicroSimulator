@@ -16,7 +16,7 @@
 #include "hexconstants.h"
 #include "assembler.h"
 
-/**
+/*
 // The main is mainly here for testing.
 int main (int argc, char *argv[]) {
 	// Check input arguments
@@ -31,12 +31,12 @@ int main (int argc, char *argv[]) {
         //FILE *input = fopen( argv[1], "r" );
         FILE *output = fopen( argv[2], "wb" );
         FILE *memory_output = fopen( argv[3], "wb" );
-        /* if ( input == 0 || output == 0 )
-        {
-		printf( "Could not open a file. Exiting.\ninput: %ld, output %ld\n", (long)&input, (long)&output);
-		return(2);	
-        }*/
-/**
+//        if ( input == 0 || output == 0 )
+//        {
+//		printf( "Could not open a file. Exiting.\ninput: %ld, output %ld\n", (long)&input, (long)&output);
+//		return(2);	
+//        }
+
 	// Create memory arrays for instruction and data memory
 	char instrMem[MEMSIZE];
 	char dataMem[MEMSIZE];
@@ -52,8 +52,8 @@ int main (int argc, char *argv[]) {
 	// Close files
 	fclose(output);
 }
-
 */
+
 
 void assemble (char * instrMem, char * dataMem, char * inputFile) {
         FILE *input = fopen(inputFile, "r" );
@@ -64,142 +64,142 @@ void assemble (char * instrMem, char * dataMem, char * inputFile) {
 
 		// Switch-like if-else block because C doesn't switch on strings
 		// LDA
-		if (strcmp(instr, "LDA") == 0) {
+		if ((strcmp(instr, "LDA") == 0) || (strcmp(instr, "lda") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = LDAI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
                 instrMem[counter++] = LDAD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);;
 			}
 		}
 		// STA
-		else if (strcmp(instr, "STA") == 0) {
+		else if ((strcmp(instr, "STA") == 0) || (strcmp(instr, "sta") == 0)) {
 			fscanf(input, "%s", operand);
 			instrMem[counter++] = STA;
-			instrMem[counter++] = atoi(operand);
+			instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 		}
 		// ADD
-		else if (strcmp(instr, "ADD") == 0) {
+		else if ((strcmp(instr, "ADD") == 0) || (strcmp(instr, "add") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = ADDI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = ADDD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// ADDC
-		else if (strcmp(instr, "ADDC") == 0) {
+		else if ((strcmp(instr, "ADDC") == 0) || (strcmp(instr, "addc") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = ADCI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = ADCD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// SUB
-		else if (strcmp(instr, "SUB") == 0) {
+		else if ((strcmp(instr, "SUB") == 0) || (strcmp(instr, "sub") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = SUBI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = SUBD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// SUBC
-		else if (strcmp(instr, "SUBC") == 0) {
+		else if ((strcmp(instr, "SUBC") == 0) || (strcmp(instr, "subc") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = SBCI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = SBCD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// INC
-		else if (strcmp(instr, "INC") == 0) {
+		else if ((strcmp(instr, "INC") == 0) || (strcmp(instr, "inc") == 0)) {
 			instrMem[counter++] = INC;
 			instrMem[counter++] = 0;
 		}
 		// DEC
-		else if (strcmp(instr, "DEC") == 0) {
+		else if ((strcmp(instr, "DEC") == 0) || (strcmp(instr, "dec") == 0)) {
 			instrMem[counter++] = DEC;
 			instrMem[counter++] = 0;
 		}
 		// AND
-		else if (strcmp(instr, "AND") == 0) {
+		else if ((strcmp(instr, "AND") == 0) || (strcmp(instr, "and") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = ANDI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = ANDD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// OR
-		else if (strcmp(instr, "OR") == 0) {
+		else if ((strcmp(instr, "OR") == 0) || (strcmp(instr, "or") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = ORI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = ORD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// INV
-		else if (strcmp(instr, "INV") == 0) {
+		else if ((strcmp(instr, "INV") == 0) || (strcmp(instr, "inv") == 0)) {
 			instrMem[counter++] = INV;
 			instrMem[counter++] = 0;
 		}
 		// XOR
-		else if (strcmp(instr, "XOR") == 0) {
+		else if ((strcmp(instr, "XOR") == 0) || (strcmp(instr, "xor") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = XORI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = XORD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// CLRA
-		else if (strcmp(instr, "CLRA") == 0) {
+		else if ((strcmp(instr, "CLRA") == 0) || (strcmp(instr, "clra") == 0)) {
 			instrMem[counter++] = CLRA;
 			instrMem[counter++] = 0;
 		}
 		// CLRC
-		else if (strcmp(instr, "CLRC") == 0) {
+		else if ((strcmp(instr, "CLRC") == 0) || (strcmp(instr, "clrc") == 0)) {
 			instrMem[counter++] = CLRC;
 			instrMem[counter++] = 0;
 		}
 		// CSET
-		else if (strcmp(instr, "CSET") == 0) {
+		else if ((strcmp(instr, "CSET") == 0) || (strcmp(instr, "cset") == 0)) {
 			instrMem[counter++] = CSET;
 			instrMem[counter++] = 0;
 		}
 		// CMP
-		else if (strcmp(instr, "CMP") == 0) {
+		else if ((strcmp(instr, "CMP") == 0) || (strcmp(instr, "cmp") == 0)) {
 			fscanf(input, "%s", operand);
 			if (operand[0] == '#') {
 				instrMem[counter++] = CMPI;
-				instrMem[counter++] = atoi(operand + 1);
+				instrMem[counter++] = (unsigned char) strtol(operand + 1, NULL, 0);
 			} else {
 				instrMem[counter++] = CMPD;
-				instrMem[counter++] = atoi(operand);
+				instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 			}
 		}
 		// Jump Block
-		else if (instr[0] == 'J') {
+		else if (instr[0] == 'J' || instr[0] == 'j') {
 			char jumpType = J;
 			if (instr[1] == 'c') jumpType |= JNC;
 			if (instr[1] == 'C') jumpType |= JC;
@@ -209,7 +209,7 @@ void assemble (char * instrMem, char * dataMem, char * inputFile) {
 			if (instr[3] == 'Z') jumpType |= JZ;
 			fscanf(input, "%s", operand);
 			instrMem[counter++] = jumpType;
-			instrMem[counter++] = atoi(operand);
+			instrMem[counter++] = (unsigned char) strtol(operand, NULL, 0);
 		}
 		// DEFAULT
 		else {
