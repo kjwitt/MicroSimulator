@@ -24,6 +24,7 @@ public:
     char _memDataBus;
     char _accum;
     Statusflags _sflags;
+    bool halted;
 
     int assemble_length;
     QString data_str;
@@ -88,6 +89,8 @@ private:
     void update_bp_GUI();
     void update_registers();
     void update_status_flags();
+    void disable_all();
+    void enable_all();
 };
 
 #endif // MAINWINDOW_H

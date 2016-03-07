@@ -83,6 +83,7 @@ int Controller::runOneCycle() {
         default:
             char destinationQuestionMark;
             JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
+            numCycle=2;
             break;
         }
         currentCycle = 1;
@@ -203,8 +204,8 @@ void Controller::execute(char instruction, char arg) {
         break;
 
     default:
-        //char destinationQuestionMark;
-        //JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
+        char destinationQuestionMark;
+        JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
         break;
     }
 }
