@@ -64,6 +64,28 @@ void Statusflags::setc(bool checkvalue){
 	}
 }
 
+void Statusflags::setn(bool checkvalue){
+    switch(checkvalue){
+    case 0:
+        N = 0;
+        break;
+    case 1:
+        N = 1;
+        break;
+    }
+}
+
+void Statusflags::setz(bool checkvalue){
+    switch(checkvalue){
+    case 0:
+        Z = 0;
+        break;
+    case 1:
+        Z = 1;
+        break;
+    }
+}
+
 void Statusflags::checkc(int addsub = 0, char val1 = 0x00, char val2 = 0x00, int Cin=0){
 	int tempval1, tempval2, tempoutput;
 	tempval1 = (int)val1;

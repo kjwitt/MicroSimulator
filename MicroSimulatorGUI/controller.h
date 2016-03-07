@@ -34,7 +34,7 @@ public:
   void execute(char instruction, char data);
 
   Controller(); // DON'T USE THIS CONTSTRUCTOR
-  Controller(char * instrMem, char * dataMem, char _pc, char _ir, char _ac ,char _data, char _addr);
+  Controller(char * instrMem, char * dataMem, char _pc, char _ir, char _ac ,char _data, char _addr, Statusflags _sr);
   ~Controller();
   int runOneCycle();
   char getAccumulator();

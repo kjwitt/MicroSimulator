@@ -21,7 +21,7 @@ int numCycle;
 int currentCycle;
 
 
-Controller::Controller(char * instrMem, char * dataMem, char _pc, char _ir, char _ac ,char _data, char _addr){
+Controller::Controller(char * instrMem, char * dataMem, char _pc, char _ir, char _ac ,char _data, char _addr, Statusflags _sr){
     // Create instruction and data memory
     instrMemory = new Memory(instrMem);
     dataMemory = new Memory(dataMem);
@@ -31,6 +31,7 @@ Controller::Controller(char * instrMem, char * dataMem, char _pc, char _ir, char
     ACC = _ac;
     data = _data;
     addr = _addr;
+    SR = _sr;
 }
 
 Controller::~Controller()

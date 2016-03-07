@@ -25,6 +25,8 @@ public:
   bool getn();
   bool getc();
   void setc(bool checkvalue);
+  void setn(bool checkvalue);
+  void setz(bool checkvalue);
 
 protected:
   bool C, Z, N;

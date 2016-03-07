@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <statusflags.h>
 
 #define MAX_DEBUG_LENGTH 10000
 
@@ -22,7 +23,7 @@ public:
     char _memAddrBus;
     char _memDataBus;
     char _accum;
-
+    Statusflags _sflags;
 
     int assemble_length;
     QString data_str;
@@ -86,6 +87,7 @@ private:
     void update_dataMem();
     void update_bp_GUI();
     void update_registers();
+    void update_status_flags();
 };
 
 #endif // MAINWINDOW_H

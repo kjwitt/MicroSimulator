@@ -186,21 +186,41 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->widget->setPalette(Pal);
     bp_array = NULL;
     assemble_length = 0;
+    QScrollBar *vScrollBar_AC = ui->AssemblyCode->verticalScrollBar();
+    QObject::connect(vScrollBar_AC,SIGNAL(valueChanged(int)),this,SLOT(assembly_scroll(int)));
 
+    /* Set up status flags boxes */
+    ui->srCarry->setText("0");
+    ui->srCarry->setFont(QFont ("Consolas", 12));
+    ui->srCarry->setStyleSheet("background-color: rgb(255, 102, 102); color: black;");
+    ui->srCarry->setDisabled(true);
+
+    ui->srNegative->setText("0");
+    ui->srNegative->setFont(QFont ("Consolas", 12));
+    ui->srNegative->setStyleSheet("background-color: rgb(255, 102, 102); color: black;");
+    ui->srNegative->setDisabled(true);
+
+    ui->srZero->setText("0");
+    ui->srZero->setFont(QFont ("Consolas", 12));
+    ui->srZero->setStyleSheet("background-color: rgb(255, 102, 102); color: black;");
+    ui->srZero->setDisabled(true);
+
+    /* Initialize registers and buses */
     _progCount=0;
     _instrReg=0;
     _memAddrBus=0;
     _memDataBus=0;
     _accum=0;
-
-    QScrollBar *vScrollBar_AC = ui->AssemblyCode->verticalScrollBar();
-    QObject::connect(vScrollBar_AC,SIGNAL(valueChanged(int)),this,SLOT(assembly_scroll(int)));
+    _sflags.setc(0);
+    _sflags.setn(0);
+    _sflags.setz(0);
 
     /* Initialize input, output, and breakpoints */
     update_input();
     update_output();
     update_bp_GUI();
     update_registers();
+    update_status_flags();
 }
 
 MainWindow::~MainWindow()
@@ -683,6 +703,42 @@ void MainWindow::update_registers()
     ui->MABoutput->setPlainText(temp4);
 }
 
+void MainWindow::update_status_flags()
+{
+    if (_sflags.getc())
+    {
+        ui->srCarry->setText("1");
+        ui->srCarry->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+    }
+    else if (!_sflags.getc())
+    {
+        ui->srCarry->setText("0");
+        ui->srCarry->setStyleSheet("background-color: rgb(255, 102, 102); color: black");
+    }
+
+    if (_sflags.getz())
+    {
+        ui->srZero->setText("1");
+        ui->srZero->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+    }
+    else if (!_sflags.getz())
+    {
+        ui->srZero->setText("0");
+        ui->srZero->setStyleSheet("background-color: rgb(255, 102, 102); color: black");
+    }
+
+    if (_sflags.getn())
+    {
+        ui->srNegative->setText("1");
+        ui->srNegative->setStyleSheet("background-color: rgb(102, 255, 102); color: black");
+    }
+    else if (!_sflags.getn())
+    {
+        ui->srNegative->setText("0");
+        ui->srNegative->setStyleSheet("background-color: rgb(255, 102, 102); color: black");
+    }
+}
+
 void MainWindow::on_pushButtonRun_clicked()
 {
 
@@ -695,10 +751,10 @@ void MainWindow::on_pushButtonRunBP_clicked()
 
 void MainWindow::on_pushButtonStep_clicked()
 {
-    //call the executive function that runs one cycle
-    Controller *_ctrl = new Controller(_instrMem,_dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus);
+    Controller *_ctrl = new Controller(_instrMem,_dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus,_sflags);
     bootstrap(_ctrl);
     runCycle();
+
     _accum = ctrl->getAccumulator();
     _memDataBus = ctrl->getDataRegister();
     _progCount = ctrl->getProgramCounter();
@@ -708,9 +764,13 @@ void MainWindow::on_pushButtonStep_clicked()
     {
         _dataMem[i]=ctrl->getDataMemory()[i];
     }
+    _sflags = ctrl->getSR();
+
     update_registers();
+    update_status_flags();
     update_dataMem();
     update_instrMem();
+
     delete _ctrl;
 }
 
