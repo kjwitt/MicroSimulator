@@ -54,6 +54,6 @@ char Memory::access(bool rw, char addrval, char dataval){
 	return output;
 }
 
-char * getMemory() {
+char * Memory::getMemory() {
 	return memarray;
 }

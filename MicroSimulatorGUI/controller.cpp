@@ -38,7 +38,7 @@ Controller::Controller(char * instrMem, char * dataMem) {
 	programCounter = 0;
 }
 
-int runOneCycle() {
+int Controller::runOneCycle() {
 	int result = -1; // Result will be 0 when program completes
 	
 	if (programCounter > 255) { //Error checking as not to exceed instruction memory
@@ -184,29 +184,29 @@ void execute(char instruction, char data) {
 }
 
 
-char getAccumulator() {
+char Controller::getAccumulator() {
 	return ACC;
 }
 
-Statusflags getSR() {
+Statusflags Controller::getSR() {
 	return SR;
 }
 
-char getIstructionRegister() {
+char Controller::getIstructionRegister() {
 	return instruction;
 }
 
-char getDataRegister() {
+char Controller::getDataRegister() {
 	return data;
 }
 
-char getProgramCounter() {
+char Controller::getProgramCounter() {
 	return programCounter;
 }
 
-char * getInstrMemory() {
+char * Controller::getInstrMemory() {
 	return instrMemory->getMemory();
 }
-char * getDataMemory() {
+char * Controller::getDataMemory() {
 	return dataMemory->getMemory();
 }
