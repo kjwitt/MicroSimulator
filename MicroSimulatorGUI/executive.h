@@ -17,7 +17,7 @@
 /*
  * 
  */
-void bootstrap(char * instrMem, char * dataMem, char pc);
+void bootstrap(Controller *_ctrl);
 
 /*
  * Runs program for one cycle
@@ -28,7 +28,7 @@ char runCycle();
  * Run program for up to 3 cycles to either run one whole instruction or
  * to finish the instruction in progress.
  */
-void runInstruction();
+//void runInstruction();
 
 /*
  * Runs program for specified number of cycles
@@ -37,10 +37,11 @@ void runInstruction();
  */
 void runXCycles(int x);
 
+extern Controller * ctrl;
+
 /*
  * Runs program until reset
  */
 void freeRun();
 
-Controller * getController();
 #endif

@@ -28,6 +28,7 @@ public:
 	Memory();
 	Memory(char * data);
 	~Memory();
+    char memarray[256];
     char access(bool rw, char addrval, char dataval = 0x00);
 	char * getMemory();
 

@@ -349,6 +349,7 @@ void MainWindow::update_input_mem()
 
 void MainWindow::on_pushButtonAssemble_clicked()
 {
+    on_pushButtonReset_clicked();
     QString assemblerCodeText = ui->AssemblyCode->toPlainText() + data_str;
     QString workspace_1 = QFileDialog::getExistingDirectory(this, tr("Please Choose a Workspace Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
@@ -374,42 +375,6 @@ void MainWindow::on_pushButtonAssemble_clicked()
 
     update_dataMem();
     update_instrMem();
-}
-
-void MainWindow::on_pushButtonStep_clicked()
-{
-    //call the executive function that runs one cycle
-}
-
-void MainWindow::on_pushButtonRun_clicked()
-{
-//    // define conditional character arrays
-//    QString numbers = "0123456789";
-
-//    //get the contents of the break line text box
-
-//    //calculate how many lines to run
-//    QString run = "";
-//    for (int i=0; i<lineBreaks.length(); i++)
-//    {
-//        if (!numbers.contains(lineBreaks[i]))
-//        {
-//            //convert 'run' to an int
-//            //int runs = run.toInt();
-
-//            //call the executive funtion that runs 'n' number of instructions, where 'n' is 'runs'
-
-//            //reset the value of run
-//            run = "";
-
-//            //pause execution; not sure how to implement yet
-
-//        }
-//        else
-//        {
-//            run= run + lineBreaks[i];
-//        }
-//    }
 }
 
 char MainWindow::array_to_hex(char array[2])
@@ -699,19 +664,49 @@ void MainWindow::update_registers()
     ui->MABoutput->setPlainText(temp4);
 }
 
-void MainWindow::on_pushButtonRun_2_clicked()
+void MainWindow::on_pushButtonRun_clicked()
 {
-    bootstrap(_instrMem,_dataMem, _progCount);
-    freeRun();
-    _accum = getController()->getAccumulator();
-    _memDataBus = getController()->getDataRegister();
-    _progCount = getController()->getProgramCounter();
-    _instrReg = getController()->getIstructionRegister();
+
+}
+
+void MainWindow::on_pushButtonRunBP_clicked()
+{
+
+}
+
+void MainWindow::on_pushButtonStep_clicked()
+{
+    //call the executive function that runs one cycle
+    Controller *_ctrl = new Controller(_instrMem,_dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus);
+    bootstrap(_ctrl);
+    runCycle();
+    _accum = ctrl->getAccumulator();
+    _memDataBus = ctrl->getDataRegister();
+    _progCount = ctrl->getProgramCounter();
+    _instrReg = ctrl->getIstructionRegister();
+    _memAddrBus = ctrl->getAddrRegister();
     for(int i=0;i<256;i++)
     {
-        _dataMem[i]=getController()->getDataMemory()[i];
+        _dataMem[i]=ctrl->getDataMemory()[i];
     }
+    update_registers();
+    update_dataMem();
+    update_instrMem();
+    delete _ctrl;
+}
 
+void MainWindow::on_pushButtonReset_clicked()
+{
+    _accum = 0;
+    _memDataBus = 0;
+    _progCount = 0;
+    _instrReg = 0;
+    _memAddrBus = 0;
+    for(int i=0;i<256;i++)
+    {
+        _dataMem[i] = 0;
+        _instrMem[i] = 0;
+    }
     update_registers();
     update_dataMem();
     update_instrMem();

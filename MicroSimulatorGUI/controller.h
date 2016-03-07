@@ -20,18 +20,31 @@
 class Controller
 {
 public:
+   char ACC;
+   Statusflags SR;
+   int cycles;
+   char instruction;
+   char data;
+   char programCounter;
+   char addr;
+
+   Memory * instrMemory;
+   Memory * dataMemory;
+
+  void execute(char instruction, char data);
+
   Controller(); // DON'T USE THIS CONTSTRUCTOR
-  Controller(char * instrMem, char * dataMem);
+  Controller(char * instrMem, char * dataMem, char _pc, char _ir, char _ac ,char _data, char _addr);
   ~Controller();
   int runOneCycle();
   char getAccumulator();
   Statusflags getSR();
   char getIstructionRegister();
   char getDataRegister();
+  char getAddrRegister();
   char getProgramCounter();
   char * getInstrMemory();
   char * getDataMemory();
-  void setProgramCounter(char _pc);
 
 protected:
   bool C, Z, N;

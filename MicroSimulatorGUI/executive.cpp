@@ -2,28 +2,23 @@
 #include "controller.h"
 #include <cstdlib>
 
-static Controller * ctrl;
-static int cycles; // number of cycles that have been run
+Controller * ctrl;
 
-void bootstrap(char * instrMem, char * dataMem, char pc) {
-    //ctrl = (Controller *) malloc(sizeof(Controller));
-	ctrl = new Controller(instrMem, dataMem);
-    ctrl->setProgramCounter(pc);
-	cycles = 0;
+void bootstrap(Controller *_ctrl) {
+    ctrl = _ctrl;
 }
 
 char runCycle() {
-	cycles++;
 	ctrl->runOneCycle();
     return ctrl->getProgramCounter();
 }
 
-void runInstruction() {
-	int i;
-	for (i = 0; i < (cycles % 3); i++) {
-		runCycle();
-	}
-}
+//void runInstruction() {
+//	int i;
+//	for (i = 0; i < (cycles % 3); i++) {
+//		runCycle();
+//	}
+//}
 
 void runXCycles(int x) {
 	int i;
@@ -39,6 +34,3 @@ void freeRun() {
 	}
 }
 
-Controller * getController() {
-	return ctrl;
-}
