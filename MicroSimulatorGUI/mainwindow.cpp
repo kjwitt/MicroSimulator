@@ -229,6 +229,9 @@ MainWindow::MainWindow(QWidget *parent) :
     _sflags.setc(0);
     _sflags.setn(0);
     _sflags.setz(0);
+    halted = false;
+    stopped = false;
+    clockSpeed=1;
 
     /* Initialize input, output, and breakpoints */
     update_input();
@@ -584,7 +587,7 @@ void MainWindow::update_dataMem()
 
         text = array_to_hex(raw_text);
 
-        if(text !=_dataMem[i])
+        if(text !=(unsigned char)_dataMem[i])
         {
             char temp2[256];
             for(int j=0;j<256;j++)
@@ -681,6 +684,7 @@ void MainWindow::assembly_scroll(int index)
 void MainWindow::on_CSDial_valueChanged(int value)
 {
     ui->CSDisplay->setPlainText(QString::number(value));
+    clockSpeed = value;
 }
 
 void MainWindow::on_checkBoxFullSpeed_toggled(bool checked)
@@ -756,37 +760,92 @@ void MainWindow::update_status_flags()
 
 void MainWindow::on_pushButtonRun_clicked()
 {
+    stopped = false;
+    //disable appropriate
 
+    //run at full
+    if(ui->checkBoxFullSpeed->isChecked())
+    {
+        while(!halted && !stopped)
+        {
+           on_pushButtonStep_clicked();
+        }
+    }
+    //run with delays
+    else
+    {
+        while(!halted && !stopped)
+        {
+            double delay = (1./(double)clockSpeed)*1000000;
+            on_pushButtonStep_clicked();
+            qApp->processEvents();
+            QThread::usleep(delay);
+        }
+    }
 }
 
 void MainWindow::on_pushButtonRunBP_clicked()
 {
+    stopped = false;
+    //disable appropriate
+    int starting_pc = _progCount;
 
+    //run at full
+    if(ui->checkBoxFullSpeed->isChecked())
+    {
+        while(!halted && !stopped)
+        {
+            if(bp_array[_progCount/2] && _progCount/2 != starting_pc/2) break;
+            on_pushButtonStep_clicked();
+        }
+    }
+    //run with delays
+    else
+    {
+        while(!halted && !stopped)
+        {
+            if(bp_array[_progCount/2] && _progCount/2 != starting_pc/2) break;
+            double delay = (1./(double)clockSpeed)*1000000;
+            on_pushButtonStep_clicked();
+            qApp->processEvents();
+            QThread::usleep(delay);
+        }
+    }
 }
 
 void MainWindow::on_pushButtonStep_clicked()
 {
-    Controller *_ctrl = new Controller(_instrMem,_dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus,_sflags);
-    bootstrap(_ctrl);
-    runCycle();
-
-    _accum = ctrl->getAccumulator();
-    _memDataBus = ctrl->getDataRegister();
-    _progCount = ctrl->getProgramCounter();
-    _instrReg = ctrl->getIstructionRegister();
-    _memAddrBus = ctrl->getAddrRegister();
-    for(int i=0;i<256;i++)
+    if(!halted)
     {
-        _dataMem[i]=ctrl->getDataMemory()[i];
+        Controller *_ctrl = new Controller(_instrMem,_dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus,_sflags);
+        bootstrap(_ctrl);
+        runCycle();
+
+        _accum = ctrl->getAccumulator();
+        _memDataBus = ctrl->getDataRegister();
+        _progCount = ctrl->getProgramCounter();
+        _instrReg = ctrl->getIstructionRegister();
+        _memAddrBus = ctrl->getAddrRegister();
+
+        if(_instrReg ==0 || _progCount == 255)
+        {
+            halted=true;
+        }
+
+        for(int i=0;i<256;i++)
+        {
+            _dataMem[i]=ctrl->getDataMemory()[i];
+        }
+        _sflags = ctrl->getSR();
+
+        update_registers();
+        update_status_flags();
+        update_dataMem();
+        update_instrMem();
+        assembly_scroll(ui->AssemblyCode->verticalScrollBar()->value());
+
+        delete _ctrl;
     }
-    _sflags = ctrl->getSR();
-
-    update_registers();
-    update_status_flags();
-    update_dataMem();
-    update_instrMem();
-
-    delete _ctrl;
 }
 
 void MainWindow::on_pushButtonReset_clicked()
@@ -796,6 +855,7 @@ void MainWindow::on_pushButtonReset_clicked()
     _progCount = 0;
     _instrReg = 0;
     _memAddrBus = 0;
+    halted = 0;
     for(int i=0;i<256;i++)
     {
         _dataMem[i] = 0;
@@ -804,4 +864,14 @@ void MainWindow::on_pushButtonReset_clicked()
     update_registers();
     update_dataMem();
     update_instrMem();
+}
+
+void MainWindow::on_pushButtonStop_clicked()
+{
+    stopped = true;
+}
+
+void MainWindow::on_pushButtonStop_pressed()
+{
+    stopped = true;
 }
