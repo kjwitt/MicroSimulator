@@ -80,6 +80,16 @@ private slots:
 
     void on_pushButtonStop_pressed();
 
+    void on_actionRun_to_BP_triggered();
+
+    void on_actionReset_triggered();
+
+    void on_actionExit_triggered();
+
+    void on_actionClear_triggered();
+
+    void on_actionSync_to_Debug_triggered();
+
 public slots:
 
     void update_output();

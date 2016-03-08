@@ -268,11 +268,14 @@ void MainWindow::on_Save_Text_File_released()
 
 void MainWindow::on_Clear_released()
 {
-    Clear_Check clear_check;
-    if(clear_check.exec())
-    {
+    QMessageBox::StandardButton reply;
+      reply = QMessageBox::question(this, "Clear Confirmation", "Are you sure you want to clear?",
+                                    QMessageBox::Yes|QMessageBox::No);
+      if (reply == QMessageBox::Yes) {
         ui->Editor_Window->clear();
-    }
+      } else {
+        return;
+      }
 }
 
 void MainWindow::on_Add_to_Debug_clicked()
@@ -330,26 +333,6 @@ void MainWindow::on_actionLoad_Text_File_triggered()
     inputfile.open(QFile::ReadOnly | QFile::Text);
     ui->Editor_Window->setPlainText(inputfile.readAll());
     inputfile.close();
-}
-
-void MainWindow::on_actionAssemble_triggered()
-{
-    ui->tabWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_actionRun_triggered()
-{
-    ui->tabWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_actionStep_triggered()
-{
-    ui->tabWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_actionStop_triggered()
-{
-    ui->tabWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_Editor_Window_textChanged()
@@ -1064,4 +1047,65 @@ void MainWindow::enable_all()
         ui->CSDisplay->setEnabled(true);
     }
     // NOTE: This does not enable stop
+}
+
+void MainWindow::on_actionAssemble_triggered()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    on_pushButtonAssemble_clicked();
+}
+
+void MainWindow::on_actionRun_triggered()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    on_pushButtonRun_clicked();
+}
+
+void MainWindow::on_actionStep_triggered()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    on_pushButtonStep_clicked();
+}
+
+void MainWindow::on_actionStop_triggered()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    on_pushButtonStop_clicked();
+}
+
+void MainWindow::on_actionRun_to_BP_triggered()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    on_pushButtonRunBP_clicked();
+}
+
+void MainWindow::on_actionReset_triggered()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    on_pushButtonReset_clicked();
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    QMessageBox::StandardButton reply;
+      reply = QMessageBox::question(this, "Exit Confirmation", "Are you sure you want to quit?",
+                                    QMessageBox::Yes|QMessageBox::No);
+      if (reply == QMessageBox::Yes) {
+        QApplication::quit();
+      } else {
+        return;
+      }
+
+}
+
+void MainWindow::on_actionClear_triggered()
+{
+    ui->tabWidget->setCurrentIndex(0);
+    on_Clear_released();
+}
+
+void MainWindow::on_actionSync_to_Debug_triggered()
+{
+    ui->tabWidget->setCurrentIndex(0);
+    on_Add_to_Debug_clicked();
 }
