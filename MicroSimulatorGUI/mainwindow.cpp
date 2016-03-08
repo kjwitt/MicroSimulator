@@ -249,7 +249,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Load_Text_File_released()
 {
-    QString inputfilename = QFileDialog::getOpenFileName(this, tr("Open Text File"), "", tr("Text files (*.txt)"));
+    QString inputfilename = QFileDialog::getOpenFileName(this, tr("Open Assembly File"), "", tr("Text Files (*.txt);;Assembly Files(*.asm)"));
     QFile inputfile(inputfilename);
     inputfile.open(QFile::ReadOnly | QFile::Text);
     ui->Editor_Window->setPlainText(inputfile.readAll());
