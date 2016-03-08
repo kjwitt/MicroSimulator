@@ -81,9 +81,9 @@ int Controller::runOneCycle() {
             numCycle=2;
             break;
         default:
-            char destinationQuestionMark;
-            JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
-            numCycle=2;
+            //char destinationQuestionMark;
+            //JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
+            numCycle=3;
             break;
         }
         currentCycle = 1;
@@ -160,11 +160,11 @@ void Controller::execute(char instruction, char arg) {
         break;
 
     case INC :
-        ACC = alu(SR, 0, ACC, '1', 0, 2, 0);
+        ACC = alu(SR, 0, ACC, 1, 0, 2, 0);
         break;
 
     case DEC :
-        ACC = alu(SR, 0, ACC, '1', 1, 2, 0);
+        ACC = alu(SR, 0, ACC, 1, 1, 2, 0);
         break;
 
     case ANDD:
@@ -204,8 +204,7 @@ void Controller::execute(char instruction, char arg) {
         break;
 
     default:
-        char destinationQuestionMark;
-        JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
+        JUMP(instruction, addr, SR, &programCounter);
         break;
     }
 }

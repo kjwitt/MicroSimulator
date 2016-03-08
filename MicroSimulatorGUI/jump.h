@@ -12,7 +12,7 @@
 #define _JUMP_H
 
 //Function headers
-void JUMP(char inst, char* dest, Statusflags& object, char* PC) ;
+void JUMP(char inst, unsigned char dest, Statusflags& object, char* PC) ;
 //functions to modify registers
 
 #endif

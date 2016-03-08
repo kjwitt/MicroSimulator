@@ -17,6 +17,7 @@
 #include <QScrollBar>
 #include <QIcon>
 #include <QThread>
+#include <QDebug>
 #include "executive.h"
 
 //#include "codeeditor.h"
@@ -766,6 +767,7 @@ void MainWindow::on_pushButtonRun_clicked()
 {
     stopped = false;
     disable_all();
+    qApp->processEvents();
 
     //run at full
     if(ui->checkBoxFullSpeed->isChecked())
@@ -791,26 +793,40 @@ void MainWindow::on_pushButtonRun_clicked()
 
 void MainWindow::on_pushButtonRunBP_clicked()
 {
+    int starting_PC=_progCount;
     stopped = false;
     //disable appropriate
-    int starting_pc = _progCount;
     disable_all();
+    qApp->processEvents();
 
     //run at full
     if(ui->checkBoxFullSpeed->isChecked())
     {
+        while(!halted && !stopped && starting_PC + 2 != _progCount)
+        {
+            on_pushButtonStep_clicked();
+        }
+
         while(!halted && !stopped)
         {
-            if(bp_array[_progCount/2] && _progCount/2 != starting_pc/2) break;
+            if(bp_array[_progCount/2]) break;
             on_pushButtonStep_clicked();
         }
     }
     //run with delays
     else
     {
+        while(!halted && !stopped && starting_PC + 2 != _progCount)
+        {
+            double delay = (1./(double)clockSpeed)*1000000;
+            on_pushButtonStep_clicked();
+            qApp->processEvents();
+            QThread::usleep(delay);
+        }
+
         while(!halted && !stopped)
         {
-            if(bp_array[_progCount/2] && _progCount/2 != starting_pc/2) break;
+            if(bp_array[_progCount/2]) break;
             double delay = (1./(double)clockSpeed)*1000000;
             on_pushButtonStep_clicked();
             qApp->processEvents();

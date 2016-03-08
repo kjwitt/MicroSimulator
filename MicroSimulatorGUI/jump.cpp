@@ -25,9 +25,9 @@ using namespace std;
  * C,N, and Z   : boolean values for the current C N Z flags
  * PC           : the current value of PC
  */
-void JUMP(char inst, char* dest, Statusflags& object, char* PC)  {
+void JUMP(char inst, unsigned char dest, Statusflags& object, char* PC)  {
    //setup boolean values for CNZ from the globals
-   bool C = object.getc();
+    bool C = object.getc();
     bool N = object.getn();
     bool Z = object.getz();
 
@@ -36,121 +36,121 @@ void JUMP(char inst, char* dest, Statusflags& object, char* PC)  {
    switch ((unsigned char) inst) {
 
     case J: // unconditional jump
-        PC = dest;
+        *PC = dest;
         break;
 //Single conditions
     case JC: // jump on c=1
         if (C == 1) {
-            PC = dest;}
+            *PC = dest;}
         break;
     case JNC: //jump on c=0
        if (C == 0) {
-           PC = dest;}
+           *PC = dest;}
        break;
 
    case JN: // jump on n=1
        if (N == 1) {
-           PC = dest;}
+           *PC = dest;}
        break;
    case JNN: //jump on n=0
       if (N == 0) {
-          PC = dest;}
+          *PC = dest;}
       break;
 
    case JZ: // jump on z=1
        if (Z == 1) {
-           PC = dest;}
+           *PC = dest;}
        break;
    case JNZ: //jump on z=0
       if (Z == 0) {
-          PC = dest;}
+          *PC = dest;}
       break;
 //Double Conditions
 
     case (JN | JZ): //jump on N = 1 or Z = 1
        if (N == 1 || Z==1) {
-           PC = dest;}
+           *PC = dest;}
        break;
     case (JN | JNZ): //jump on N = 1 or Z = 0
       if (N == 1 || Z==0) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNN | JZ): //jump on N = 0 or Z = 1
       if (N == 0 || Z==1) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNN | JNZ): //jump on N = 0 or Z = 0
      if (N == 0 || Z==0) {
-         PC = dest;}
+         *PC = dest;}
      break;
 
    case (JC | JZ): //jump on C = 1 or Z = 1
       if (C == 1 || Z==1) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JC | JNZ): //jump on C = 1 or Z = 0
       if (C == 1 || Z==0) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JZ): //jump on C =0 or Z = 1
       if (C == 0 || Z==1) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JNZ): //jump on C = 0 or Z = 0
       if (C == 0 || Z==0) {
-          PC = dest;}
+          *PC = dest;}
       break;
 
    case (JC | JN): //jump on C = 1 or N = 1
       if (C == 1 || N==1) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JC | JNN): //jump on C = 1 or N = 0
       if (C == 1 || N==0) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JN): //jump on C = 0 or N = 1
       if (C == 0 || N==1) {
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JNN): //jump on C = 0 or N = 0
       if (C == 0 || N==0) {
-          PC = dest;}
+          *PC = dest;}
       break;
 
 
 //Triple Conditions
     case (JC | JN | JZ): // jump on C=1 N=1 Z=1
        if (C==1 || N==1 || Z==1){
-           PC = dest;}
+           *PC = dest;}
        break;
     case (JC | JNN | JZ): // jump on C=1 N=0 Z=1
       if (C==1 || N==0 || Z==1){
-          PC = dest;}
+          *PC = dest;}
       break;
     case (JC | JN | JNZ): // jump on C=1 N=1 Z=0
       if (C==1 || N==1 || Z==0){
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JN | JZ): // jump on C=0 N=1 Z=1
       if (C==0 || N==1 || Z==1){
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JC | JNN | JNZ): // jump on C=1 N=0 Z=0
       if (C==1 || N==0|| Z==0){
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JN | JNZ): // jump on C=0 N=1 Z=0
       if (C==0 || N==1|| Z==0){
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JNN | JZ): // jump on C=0 N=0 Z=1
       if (C==0 || N==0|| Z==1){
-          PC = dest;}
+          *PC = dest;}
       break;
    case (JNC | JNN | JNZ): // jump on C=0 N=0 Z=0
       if (C==0 || N==0|| Z==0){
-          PC = dest;}
+          *PC = dest;}
       break;
 
 }
