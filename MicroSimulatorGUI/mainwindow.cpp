@@ -290,6 +290,10 @@ void MainWindow::on_Add_to_Debug_clicked()
         data_str = "\n\n.data\n\n"+pieces[1];
         temp = pieces[0];
     }
+    else
+    {
+        data_str.clear();
+    }
     temp.remove("\n\n");
     assemble_length = temp.count('\n')+1;
 
@@ -410,16 +414,16 @@ void MainWindow::on_pushButtonAssemble_clicked()
     QByteArray inputFullPathBytes = inputFullPath.toLocal8Bit();
     char *assemblerFile = new char[inputFullPathBytes.size()+1];
     strcpy(assemblerFile, inputFullPathBytes.data());
-    assemble(_instrMem, _dataMem, assemblerFile);
+    assemble((char *) _instrMem, (char *) _dataMem, assemblerFile);
     delete [] assemblerFile;
 
     update_dataMem();
     update_instrMem();
 }
 
-char MainWindow::array_to_hex(char array[2])
+unsigned char MainWindow::array_to_hex(unsigned char array[2])
 {
-    char hex;
+    unsigned char hex;
     switch(array[1])
     {
     case('a'):case('A'):
@@ -474,7 +478,7 @@ char MainWindow::array_to_hex(char array[2])
 void MainWindow::update_output()
 {
     unsigned char output;
-    char raw_text[2];
+    unsigned char raw_text[2];
     QString raw_input = dataMem[254]->toPlainText();
     QByteArray raw_array = raw_input.toLocal8Bit();
 
@@ -509,8 +513,8 @@ void MainWindow::update_instrMem()
     {
         QString raw_string = instrMem[i]->toPlainText();
         QByteArray raw_array = raw_string.toLocal8Bit();
-        char raw_text[2];
-        char text;
+        unsigned char raw_text[2];
+        unsigned char text;
 
         for(int j = 0; j<2;j++)
         {
@@ -577,8 +581,8 @@ void MainWindow::update_dataMem()
     {
         QString raw_string = dataMem[i]->toPlainText();
         QByteArray raw_array = raw_string.toLocal8Bit();
-        char raw_text[2];
-        char text=0;
+        unsigned char raw_text[2];
+        unsigned char text=0;
 
         for(int j = 0; j<2;j++)
         {
@@ -587,7 +591,7 @@ void MainWindow::update_dataMem()
 
         text = array_to_hex(raw_text);
 
-        if(text !=(unsigned char)_dataMem[i])
+        if(text !=_dataMem[i])
         {
             char temp2[256];
             for(int j=0;j<256;j++)
@@ -595,7 +599,7 @@ void MainWindow::update_dataMem()
                 temp2[j]='\0';
             }
 
-            sprintf(temp2,"%.02X",(unsigned char)_dataMem[i]);
+            sprintf(temp2,"%.02X",_dataMem[i]);
 
             dataMem[i]->setText(temp2);
 
@@ -820,7 +824,7 @@ void MainWindow::on_pushButtonStep_clicked()
 {
     if(!halted)
     {
-        Controller *_ctrl = new Controller(_instrMem,_dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus,_sflags);
+        Controller *_ctrl = new Controller((char *) _instrMem,(char *) _dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus,_sflags);
         bootstrap(_ctrl);
         runCycle();
 

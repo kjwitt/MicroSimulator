@@ -16,8 +16,8 @@ class MainWindow : public QMainWindow
 
 public:
 
-    char _dataMem[256];
-    char _instrMem[256];
+    unsigned char _dataMem[256];
+    unsigned char _instrMem[256];
     unsigned char _progCount;
     unsigned char _instrReg;
     unsigned char _memAddrBus;
@@ -88,7 +88,7 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
-    char array_to_hex(char array[2]);
+    unsigned char array_to_hex( unsigned char array[2]);
     void update_input_mem();
     void update_instrMem();
     void update_dataMem();
