@@ -97,6 +97,7 @@ private:
     void update_status_flags();
     void disable_all();
     void enable_all();
+    void run_no_update();
 };
 
 #endif // MAINWINDOW_H

@@ -774,8 +774,14 @@ void MainWindow::on_pushButtonRun_clicked()
     {
         while(!halted && !stopped)
         {
-           on_pushButtonStep_clicked();
+           run_no_update();
+           qApp->processEvents();
         }
+        update_registers();
+        update_status_flags();
+        update_dataMem();
+        update_instrMem();
+        assembly_scroll(ui->AssemblyCode->verticalScrollBar()->value());
     }
     //run with delays
     else
@@ -804,14 +810,20 @@ void MainWindow::on_pushButtonRunBP_clicked()
     {
         while(!halted && !stopped && starting_PC + 2 != _progCount)
         {
-            on_pushButtonStep_clicked();
+            run_no_update();
         }
 
         while(!halted && !stopped)
         {
             if(bp_array[_progCount/2]) break;
-            on_pushButtonStep_clicked();
+            run_no_update();
+            qApp->processEvents();
         }
+        update_registers();
+        update_status_flags();
+        update_dataMem();
+        update_instrMem();
+        assembly_scroll(ui->AssemblyCode->verticalScrollBar()->value());
     }
     //run with delays
     else
@@ -868,6 +880,35 @@ void MainWindow::on_pushButtonStep_clicked()
         assembly_scroll(ui->AssemblyCode->verticalScrollBar()->value());
 
         delete _ctrl;
+    }
+}
+
+void MainWindow::run_no_update()
+{
+    if(!halted)
+    {
+        Controller *_ctrl = new Controller((char *) _instrMem,(char *) _dataMem,_progCount,_instrReg, _accum, _memDataBus,_memAddrBus,_sflags);
+        bootstrap(_ctrl);
+        runCycle();
+
+        _accum = ctrl->getAccumulator();
+        _memDataBus = ctrl->getDataRegister();
+        _progCount = ctrl->getProgramCounter();
+        _instrReg = ctrl->getIstructionRegister();
+        _memAddrBus = ctrl->getAddrRegister();
+
+        if(_instrReg ==0 || _progCount == 255)
+        {
+            halted=true;
+        }
+
+        for(int i=0;i<256;i++)
+        {
+            _dataMem[i]=ctrl->getDataMemory()[i];
+        }
+        _sflags = ctrl->getSR();
+
+        delete ctrl;
     }
 }
 
