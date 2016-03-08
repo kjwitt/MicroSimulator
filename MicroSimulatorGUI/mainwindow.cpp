@@ -634,7 +634,7 @@ void MainWindow::update_bp_GUI()
         {
             if(bp_array[i+scroll_offset])
             {
-                QString fileName(":/images/breakpoint.png");
+                QString fileName(":/breakpoint.png");
                 if(QFile(fileName).exists() == false)
                     QMessageBox::warning(this, "Application", "Wrong file name : " + fileName);
                 else
