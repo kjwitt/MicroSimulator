@@ -36,7 +36,8 @@ Controller::Controller(char * instrMem, char * dataMem, char _pc, char _ir, char
 
 Controller::~Controller()
 {
-
+    delete instrMemory;
+    delete dataMemory;
 }
 
 int Controller::runOneCycle() {

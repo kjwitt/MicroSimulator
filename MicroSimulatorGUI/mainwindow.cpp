@@ -398,11 +398,11 @@ void MainWindow::on_pushButtonAssemble_clicked()
     QString assemblerCodeText = ui->AssemblyCode->toPlainText() + data_str;
     QString workspace_1 = QFileDialog::getExistingDirectory(this, tr("Please Choose a Workspace Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
-//    if(workspace_1 == NULL)
-//    {
-//        ui->debugWindow->append("Assembler will not run unless a workspace is chosen\n");
-//        return;
-//    }
+    if(workspace_1 == NULL)
+    {
+        //ui->debugWindow->append("Assembler will not run unless a workspace is chosen\n");
+        return;
+    }
 
     QString inputFullPath = (workspace_1 + "//inputAssembly.txt");
 
