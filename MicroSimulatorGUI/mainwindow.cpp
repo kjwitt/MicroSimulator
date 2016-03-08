@@ -799,7 +799,6 @@ void MainWindow::on_pushButtonRun_clicked()
 
 void MainWindow::on_pushButtonRunBP_clicked()
 {
-    int starting_PC=_progCount;
     stopped = false;
     //disable appropriate
     disable_all();
@@ -808,10 +807,7 @@ void MainWindow::on_pushButtonRunBP_clicked()
     //run at full
     if(ui->checkBoxFullSpeed->isChecked())
     {
-        while(!halted && !stopped && starting_PC + 2 != _progCount)
-        {
-            run_no_update();
-        }
+        run_instruction_no_update();
 
         while(!halted && !stopped)
         {
@@ -828,13 +824,7 @@ void MainWindow::on_pushButtonRunBP_clicked()
     //run with delays
     else
     {
-        while(!halted && !stopped && starting_PC + 2 != _progCount)
-        {
-            double delay = (1./(double)clockSpeed)*1000000;
-            on_pushButtonStep_clicked();
-            qApp->processEvents();
-            QThread::usleep(delay);
-        }
+        run_instruction();
 
         while(!halted && !stopped)
         {
@@ -909,6 +899,105 @@ void MainWindow::run_no_update()
         _sflags = ctrl->getSR();
 
         delete ctrl;
+    }
+}
+
+void MainWindow::run_instruction()
+{
+    int numCycle;
+    unsigned char next_instruction = _instrMem[_progCount];
+
+    switch (next_instruction) {
+    //3 cycle
+    case LDAD:
+    case ADDD:
+    case ADCD:
+    case SUBD:
+    case SBCD:
+    case ANDD:
+    case ORD :
+    case XORD:
+    case CMPD:
+    case STA :
+        numCycle=3;
+        break;
+        //2 cycle
+    case LDAI:
+    case ADDI:
+    case ADCI:
+    case SUBI:
+    case SBCI:
+    case INC :
+    case DEC :
+    case ANDI:
+    case ORI :
+    case INV :
+    case XORI:
+    case CLRA:
+    case CLRC:
+    case CSET:
+    case CMPI:
+        numCycle=2;
+        break;
+    default:
+        numCycle=3;
+        break;
+    }
+    for(int i =0;i<numCycle;i++)
+    {
+        double delay = (1./(double)clockSpeed)*1000000;
+        on_pushButtonStep_clicked();
+        qApp->processEvents();
+        QThread::usleep(delay);
+        if(halted || stopped) break;
+    }
+}
+
+void MainWindow::run_instruction_no_update()
+{
+    int numCycle;
+    unsigned char next_instruction = _instrMem[_progCount];
+
+    switch (next_instruction) {
+    //3 cycle
+    case LDAD:
+    case ADDD:
+    case ADCD:
+    case SUBD:
+    case SBCD:
+    case ANDD:
+    case ORD :
+    case XORD:
+    case CMPD:
+    case STA :
+        numCycle=3;
+        break;
+        //2 cycle
+    case LDAI:
+    case ADDI:
+    case ADCI:
+    case SUBI:
+    case SBCI:
+    case INC :
+    case DEC :
+    case ANDI:
+    case ORI :
+    case INV :
+    case XORI:
+    case CLRA:
+    case CLRC:
+    case CSET:
+    case CMPI:
+        numCycle=2;
+        break;
+    default:
+        numCycle=3;
+        break;
+    }
+    for(int i =0;i<numCycle;i++)
+    {
+        run_no_update();
+        if(halted || stopped) break;
     }
 }
 

@@ -14,10 +14,49 @@ char runCycle() {
 }
 
 //void runInstruction() {
-//	int i;
-//	for (i = 0; i < (cycles % 3); i++) {
-//		runCycle();
-//	}
+//    int numCycle;
+//    switch ((unsigned char) ctrl->getIstructionRegister()) {
+//    //3 cycle
+//    case LDAD:
+//    case ADDD:
+//    case ADCD:
+//    case SUBD:
+//    case SBCD:
+//    case ANDD:
+//    case ORD :
+//    case XORD:
+//    case CMPD:
+//    case STA :
+//        numCycle=3;
+//        break;
+//        //2 cycle
+//    case LDAI:
+//    case ADDI:
+//    case ADCI:
+//    case SUBI:
+//    case SBCI:
+//    case INC :
+//    case DEC :
+//    case ANDI:
+//    case ORI :
+//    case INV :
+//    case XORI:
+//    case CLRA:
+//    case CLRC:
+//    case CSET:
+//    case CMPI:
+//        numCycle=2;
+//        break;
+//    default:
+//        //char destinationQuestionMark;
+//        //JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
+//        numCycle=3;
+//        break;
+//    }
+//    for(int i =0;i<numCycle;i++)
+//    {
+//        runCycle();
+//    }
 //}
 
 void runXCycles(int x) {

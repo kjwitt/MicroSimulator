@@ -98,6 +98,8 @@ private:
     void disable_all();
     void enable_all();
     void run_no_update();
+    void run_instruction();
+    void run_instruction_no_update();
 };
 
 #endif // MAINWINDOW_H
