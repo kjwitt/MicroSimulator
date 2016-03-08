@@ -26,7 +26,7 @@ public:
    char instruction;
    char data;
    char programCounter;
-   char addr;
+   unsigned char addr;
 
    Memory * instrMemory;
    Memory * dataMemory;
