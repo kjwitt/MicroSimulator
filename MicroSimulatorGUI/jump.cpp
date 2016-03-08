@@ -66,7 +66,7 @@ void JUMP(char inst, char* dest, Statusflags& object, char* PC)  {
           PC = dest;}
       break;
 //Double Conditions
-      /*
+
     case (JN | JZ): //jump on N = 1 or Z = 1
        if (N == 1 || Z==1) {
            PC = dest;}
@@ -100,8 +100,58 @@ void JUMP(char inst, char* dest, Statusflags& object, char* PC)  {
       if (C == 0 || Z==0) {
           PC = dest;}
       break;
+
+   case (JC | JN): //jump on C = 1 or N = 1
+      if (C == 1 || N==1) {
+          PC = dest;}
+      break;
+   case (JC | JNN): //jump on C = 1 or N = 0
+      if (C == 1 || N==0) {
+          PC = dest;}
+      break;
+   case (JNC | JN): //jump on C = 0 or N = 1
+      if (C == 0 || N==1) {
+          PC = dest;}
+      break;
+   case (JNC | JNN): //jump on C = 0 or N = 0
+      if (C == 0 || N==0) {
+          PC = dest;}
+      break;
+
+
 //Triple Conditions
-*/
+    case (JC | JN | JZ): // jump on C=1 N=1 Z=1
+       if (C==1 || N==1 || Z==1){
+           PC = dest;}
+       break;
+    case (JC | JNN | JZ): // jump on C=1 N=0 Z=1
+      if (C==1 || N==0 || Z==1){
+          PC = dest;}
+      break;
+    case (JC | JN | JNZ): // jump on C=1 N=1 Z=0
+      if (C==1 || N==1 || Z==0){
+          PC = dest;}
+      break;
+   case (JNC | JN | JZ): // jump on C=0 N=1 Z=1
+      if (C==0 || N==1 || Z==1){
+          PC = dest;}
+      break;
+   case (JC | JNN | JNZ): // jump on C=1 N=0 Z=0
+      if (C==1 || N==0|| Z==0){
+          PC = dest;}
+      break;
+   case (JNC | JN | JNZ): // jump on C=0 N=1 Z=0
+      if (C==0 || N==1|| Z==0){
+          PC = dest;}
+      break;
+   case (JNC | JNN | JZ): // jump on C=0 N=0 Z=1
+      if (C==0 || N==0|| Z==1){
+          PC = dest;}
+      break;
+   case (JNC | JNN | JNZ): // jump on C=0 N=0 Z=0
+      if (C==0 || N==0|| Z==0){
+          PC = dest;}
+      break;
 
 }
 }
