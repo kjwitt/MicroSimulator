@@ -178,7 +178,7 @@ void execute(char instruction, char data) {
 
 		default:
 			char destinationQuestionMark; 
-			//JUMP(&instruction, &destinationQuestionMark, SR, &programCounter);
+			//JUMP(instruction, &destinationQuestionMark, SR, &programCounter);
 			break;
 		}
 }
