@@ -40,7 +40,7 @@
 #define JN    0xD2 // Jump negative
 #define JNN   0xD0 // Jump on not negative
 #define JZ    0xC9 // Jump on zero
-#define JNZ   0xC9 // Jump on not zero
+#define JNZ   0xC8 // Jump on not zero
 
 #define MEMSIZE 256 // Size of instruction and data memory
 
