@@ -188,7 +188,7 @@ void Controller::execute(char instruction, char arg) {
         break;
 
     case CLRA:
-        ACC = '0';
+        ACC = 0;
         break;
 
     case CLRC:
