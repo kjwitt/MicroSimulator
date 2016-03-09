@@ -26,6 +26,7 @@ public:
     Statusflags _sflags;
     bool halted;
 
+    bool is_assembled;
     int clockSpeed;
     bool stopped;
     int assemble_length;
@@ -110,6 +111,7 @@ private:
     void run_no_update();
     void run_instruction();
     void run_instruction_no_update();
+    void step_one();
 };
 
 #endif // MAINWINDOW_H

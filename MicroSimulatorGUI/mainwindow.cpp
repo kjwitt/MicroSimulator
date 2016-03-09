@@ -232,6 +232,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _sflags.setz(0);
     halted = false;
     stopped = false;
+    is_assembled = false;
     clockSpeed=1;
 
     /* Initialize input, output, and breakpoints */
@@ -312,6 +313,7 @@ void MainWindow::on_Add_to_Debug_clicked()
     ui->AssemblyCodeLabel->setStyleSheet("QLabel {color: black;}");
     ui->AssemblyCodeLabel->setText("Assembly Code");
     ui->tabWidget->setCurrentIndex(1);
+    is_assembled = false;
 }
 
 void MainWindow::on_actionSave_Text_File_triggered()
@@ -403,6 +405,7 @@ void MainWindow::on_pushButtonAssemble_clicked()
 
     update_dataMem();
     update_instrMem();
+    is_assembled = true;
 }
 
 unsigned char MainWindow::array_to_hex(unsigned char array[2])
@@ -748,6 +751,21 @@ void MainWindow::update_status_flags()
 
 void MainWindow::on_pushButtonRun_clicked()
 {
+    if(!is_assembled)
+    {
+        QMessageBox::StandardButton reply;
+          reply = QMessageBox::question(this, "Assembly Discontinuity", "The current program has not yet been assembled. You must assemble to continue. Continue?",
+                                        QMessageBox::Yes|QMessageBox::Cancel);
+          if (reply == QMessageBox::Yes) {
+            on_pushButtonAssemble_clicked();
+            qApp->processEvents();
+          }
+          else
+          {
+              return;
+          }
+    }
+
     stopped = false;
     disable_all();
     qApp->processEvents();
@@ -772,7 +790,7 @@ void MainWindow::on_pushButtonRun_clicked()
         while(!halted && !stopped)
         {
             double delay = (1./(double)clockSpeed)*1000000;
-            on_pushButtonStep_clicked();
+            step_one();
             qApp->processEvents();
             QThread::usleep(delay);
         }
@@ -782,6 +800,20 @@ void MainWindow::on_pushButtonRun_clicked()
 
 void MainWindow::on_pushButtonRunBP_clicked()
 {
+    if(!is_assembled)
+    {
+        QMessageBox::StandardButton reply;
+          reply = QMessageBox::question(this, "Assembly Discontinuity", "The current program has not yet been assembled. You must assemble to continue. Continue?",
+                                        QMessageBox::Yes|QMessageBox::Cancel);
+          if (reply == QMessageBox::Yes) {
+            on_pushButtonAssemble_clicked();
+            qApp->processEvents();
+          }
+          else
+          {
+              return;
+          }
+    }
     stopped = false;
     //disable appropriate
     disable_all();
@@ -813,7 +845,7 @@ void MainWindow::on_pushButtonRunBP_clicked()
         {
             if(bp_array[_progCount/2]) break;
             double delay = (1./(double)clockSpeed)*1000000;
-            on_pushButtonStep_clicked();
+            step_one();
             qApp->processEvents();
             QThread::usleep(delay);
         }
@@ -822,6 +854,25 @@ void MainWindow::on_pushButtonRunBP_clicked()
 }
 
 void MainWindow::on_pushButtonStep_clicked()
+{
+    if(!is_assembled)
+    {
+        QMessageBox::StandardButton reply;
+          reply = QMessageBox::question(this, "Assembly Discontinuity", "The current program has not yet been assembled. You must assemble to continue. Continue?",
+                                        QMessageBox::Yes|QMessageBox::Cancel);
+          if (reply == QMessageBox::Yes) {
+            on_pushButtonAssemble_clicked();
+            qApp->processEvents();
+          }
+          else
+          {
+              return;
+          }
+    }
+    step_one();
+}
+
+void MainWindow::step_one()
 {
     if(!halted)
     {
@@ -929,7 +980,7 @@ void MainWindow::run_instruction()
     for(int i =0;i<numCycle;i++)
     {
         double delay = (1./(double)clockSpeed)*1000000;
-        on_pushButtonStep_clicked();
+        step_one();
         qApp->processEvents();
         QThread::usleep(delay);
         if(halted || stopped) break;
@@ -992,6 +1043,10 @@ void MainWindow::on_pushButtonReset_clicked()
     _instrReg = 0;
     _memAddrBus = 0;
     halted = 0;
+    is_assembled = false;
+    _sflags.setc(false);
+    _sflags.setn(false);
+    _sflags.setz(false);
     for(int i=0;i<256;i++)
     {
         _dataMem[i] = 0;
@@ -1000,6 +1055,7 @@ void MainWindow::on_pushButtonReset_clicked()
     update_registers();
     update_dataMem();
     update_instrMem();
+    update_status_flags();
 }
 
 void MainWindow::on_pushButtonStop_pressed()
