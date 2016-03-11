@@ -189,6 +189,9 @@ void Controller::execute(char instruction, char arg) {
 
     case CLRA:
         ACC = 0;
+	SR.setc(0);
+	SR.setn(0);
+	SR.set(z(1);
         break;
 
     case CLRC:
